@@ -7,7 +7,8 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 Route::group(
     [
-        'prefix' => LaravelLocalization::setLocale(),
+        'prefix' => LaravelLocalization::setLocale() . 'dashboard/',
+        'as' => 'dashboard.',
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ],
     function () {
