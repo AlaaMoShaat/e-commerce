@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="loading" lang="en" data-textdirection="{{ config('app.locale') == 'ar' ? '' : 'ltr' }}">
+<html class="loading" lang="en" data-textdirection="{{ config('app.locale') == 'ar' ? 'rtl' : 'ltr' }}">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -36,7 +36,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard') }}/css-rtl/pages/login-register.css">
     <!-- END Page Level CSS-->
     <!-- BEGIN Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="../../../assets/css/style-rtl.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets') }}/css/style-rtl.css">
     <!-- END Custom CSS-->
 </head>
 
@@ -67,8 +67,30 @@
             <div class="navbar-container">
                 <div class="collapse navbar-collapse justify-content-end" id="navbar-mobile">
                     <ul class="nav navbar-nav">
-                        <li class="nav-item"><a class="nav-link mr-2 nav-link-label" href="index.html"><i
-                                    class="ficon ft-arrow-left"></i></a></li>
+                        <li class="dropdown dropdown-language nav-item">
+                            <a class="dropdown-toggle nav-link" id="dropdown-flag" href="#" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false"><i
+                                    class="flag-icon flag-icon-{{ config('app.locale') == 'ar' ? 'sa' : 'gb' }}"></i>
+                                <span class="selected-language"></span></a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown-flag">
+                                @php
+                                    $lang = config('app.locale')[0];
+                                @endphp
+                                @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                    <a class="dropdown-item {{ $localeCode[0] == $lang ? 'selected-language' : '' }}"
+                                        rel="alternate" hreflang="{{ $localeCode }}"
+                                        href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                        <i
+                                            class="flag-icon flag-icon-{{ $properties['native'] == 'English' ? 'gb' : 'sa' }}"></i>{{ $properties['native'] }}
+                                    </a>
+                                @endforeach
+                            </div>
+                        </li>
+                        <style>
+                            .selected-language {
+                                background-color: #eee;
+                            }
+                        </style>
                         <li class="dropdown nav-item">
                             <a class="nav-link mr-2 nav-link-label" href="#" data-toggle="dropdown"><i
                                     class="ficon ft-settings"></i></a>
@@ -107,6 +129,9 @@
     <!-- BEGIN PAGE LEVEL JS-->
     <script src="{{ asset('assets/dashboard') }}/js/scripts/forms/form-login-register.js" type="text/javascript"></script>
     <!-- END PAGE LEVEL JS-->
+
+    @stack('js')
+
 </body>
 
 </html>

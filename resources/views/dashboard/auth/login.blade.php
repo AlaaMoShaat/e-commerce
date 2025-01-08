@@ -18,52 +18,95 @@
                                             alt="branding logo">
                                     </div>
                                     <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2">
-                                        <span>Login with Modern</span>
+                                        <span>{{ __('auth.login_with_ecom') }}</span>
                                     </h6>
+                                    @include('dashboard.includes.alert-success')
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form class="form-horizontal" action="index.html" novalidate>
+                                        <form id="loginForm" action="{{ route('dashboard.login.post') }}" method="POST"
+                                            class="form-horizontal" action="index.html" novalidate>
+                                            @csrf
                                             <fieldset class="form-group position-relative has-icon-left">
-                                                <input type="text" class="form-control input-lg" id="user-name"
-                                                    placeholder="Your Username" tabindex="1" required
-                                                    data-validation-required-message="Please enter your username.">
+                                                <input name="email" type="text" class="form-control input-lg"
+                                                    id="user-name" placeholder="{{ __('auth.email') }}" tabindex="1">
+                                                @include('dashboard.includes.alert-danger', [
+                                                    'field' => 'email',
+                                                ])
                                                 <div class="form-control-position">
                                                     <i class="ft-user"></i>
                                                 </div>
                                                 <div class="help-block font-small-3"></div>
                                             </fieldset>
                                             <fieldset class="form-group position-relative has-icon-left">
-                                                <input type="password" class="form-control input-lg" id="password"
-                                                    placeholder="Enter Password" tabindex="2" required
-                                                    data-validation-required-message="Please enter valid passwords.">
+                                                <input name="password" type="password" class="form-control input-lg"
+                                                    id="password" placeholder="{{ __('auth.password') }}" tabindex="2">
+                                                @error('password')
+                                                    <small class="text-danger">{{ $message }}</small>
+                                                @enderror
                                                 <div class="form-control-position">
                                                     <i class="la la-key"></i>
                                                 </div>
                                                 <div class="help-block font-small-3"></div>
                                             </fieldset>
+                                            <div class="overlay" id="captchaOverlay" style="display: none;">
+                                                <div class="captcha-container">
+                                                    {!! NoCaptcha::display() !!}
+                                                </div>
+                                            </div>
+
+                                            <style>
+                                                /* الغلاف الكامل */
+                                                .overlay {
+                                                    position: fixed;
+                                                    top: 0;
+                                                    left: 0;
+                                                    width: 100%;
+                                                    height: 100%;
+                                                    background: rgba(0, 0, 0, 0.7);
+                                                    /* خلفية نصف شفافة */
+                                                    display: flex;
+                                                    justify-content: center;
+                                                    align-items: center;
+                                                    z-index: 9999;
+                                                    /* ضمان الظهور فوق جميع العناصر */
+                                                }
+
+                                                /* صندوق الكابتشا */
+                                                .captcha-container {
+                                                    background: #fff;
+                                                    padding: 20px;
+                                                    border-radius: 8px;
+                                                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+                                                    /* إضافة تأثير الظل */
+                                                    text-align: center;
+                                                    max-width: 400px;
+                                                    /* عرض مناسب */
+                                                    width: 90%;
+                                                    /* قابل للتكيف مع الشاشات الصغيرة */
+                                                }
+                                            </style>
+                                            <div class="row">
+                                                @error('g-recaptcha-response')
+                                                    <small class="text-danger">{{ $message }}</small>
+                                                @enderror
+                                            </div>
                                             <div class="form-group row">
                                                 <div class="col-md-6 col-12 text-center text-md-left">
                                                     <fieldset>
-                                                        <input type="checkbox" id="remember-me" class="chk-remember">
-                                                        <label for="remember-me"> Remember Me</label>
+                                                        <input name="remember_me" type="checkbox" id="remember-me"
+                                                            class="chk-remember">
+                                                        <label for="remember-me">{{ __('auth.remember_me') }}</label>
                                                     </fieldset>
                                                 </div>
                                                 <div class="col-md-6 col-12 text-center text-md-right"><a
-                                                        href="recover-password.html" class="card-link">Forgot
-                                                        Password?</a></div>
+                                                        href="{{ route('dashboard.password.email') }}"
+                                                        class="card-link">{{ __('auth.forget_password') }}</a></div>
                                             </div>
-                                            <button type="submit" class="btn btn-danger btn-block btn-lg"><i
-                                                    class="ft-unlock"></i> Login</button>
+                                            <button id="loginButton" class="btn btn-danger btn-block btn-lg"><i
+                                                    class="ft-unlock"></i>{{ __('auth.login') }}</button>
                                         </form>
                                     </div>
-                                </div>
-                                <div class="card-footer border-0">
-                                    <p class="card-subtitle line-on-side text-muted text-center font-small-3 mx-2 my-1">
-                                        <span>New to Modern ?</span>
-                                    </p>
-                                    <a href="register-advanced.html" class="btn btn-info btn-block btn-lg mt-3"><i
-                                            class="ft-user"></i> Register</a>
                                 </div>
                             </div>
                         </div>
@@ -73,3 +116,27 @@
         </div>
     </div>
 @endsection
+
+@push('js')
+    {!! NoCaptcha::renderJs() !!}
+    <script>
+        document.getElementById('loginButton').addEventListener('click', function(event) {
+            event.preventDefault(); // منع إعادة تحميل الصفحة
+
+            // عرض نافذة الكابتشا
+            document.getElementById('captchaOverlay').style.display = 'flex';
+
+            // تحقق من الكابتشا بعد تفاعل المستخدم
+            setTimeout(() => {
+                const captchaResponse = grecaptcha.getResponse(); // الحصول على الاستجابة
+
+                if (captchaResponse.length === 0) {
+                    document.getElementById('captchaOverlay').style.display = 'none';
+                } else {
+                    // إرسال النموذج إذا تم التحقق
+                    document.getElementById('loginForm').submit();
+                }
+            }, 5000); // تأخير بسيط للسماح للمستخدم بالتفاعل
+        });
+    </script>
+@endpush

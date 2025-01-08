@@ -13,8 +13,28 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
     'password' => 'The provided password is incorrect.',
+    'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-
+    'remember_me' => 'Remember me',
+    'forget_password' => 'Forgot your password?',
+    'login' => 'Login',
+    'login_with_ecom' => 'Login with E-Commerce',
+    'logout' => 'Logout',
+    'register' => 'Register',
+    'email' => 'Email Address',
+    'password' => 'Password',
+    'confirm_password' => 'Confirm Password',
+    'name' => 'Name',
+    'reset_password' => 'Reset Password',
+    'send_reset_link' => 'Send Password Reset Link',
+    'verify_email' => 'Verify Email Address',
+    'verification_link_sent' => 'A new verification link has been sent to your email address.',
+    'verify_email_address' => 'Please verify your email address.',
+    'click_here_to_request_another' => 'Click here to request another.',
+    'already_registered' => 'Already registered?',
+    'not_registered' => 'Don’t have an account?',
+    'verify_code' => 'Verify Code',
+    'code' => 'Enter Code',
+    'try_again' => 'Try Again Later'
 ];

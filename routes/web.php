@@ -10,8 +10,8 @@ Route::group(
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ],
     function () {
-        Route::get('/', function () {
-            return view('dashboard.home');
-        });
+        // Route::get('/', function () {
+        //     return view('dashboard.home');
+        // });
     }
 );
