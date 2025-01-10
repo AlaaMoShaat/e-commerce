@@ -40,6 +40,8 @@
                                             <button type="submit" class="btn btn-outline-info btn-lg btn-block"><i
                                                     class="ft-unlock"></i>{{ __('auth.verify_code') }}</button>
                                         </form>
+                                        <div class="col-md-6 col-12"><a href="{{ route('dashboard.login') }}"
+                                                class="card-link">{{ __('auth.login') }}</a></div>
                                     </div>
                                 </div>
                             </div>

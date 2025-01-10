@@ -36,5 +36,7 @@ return [
     'not_registered' => 'Don’t have an account?',
     'verify_code' => 'Verify Code',
     'code' => 'Enter Code',
-    'try_again' => 'Try Again Later'
+    'try_again' => 'Try Again Later',
+    'complete_steps' => 'Please complete the above steps',
+
 ];

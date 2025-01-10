@@ -35,7 +35,9 @@ return [
     'not_registered' => 'ليس لديك حساب؟',
     'verify_code' => 'تحقق من الكود',
     'code' => 'ادخل الكود',
-    'try_again' => 'حاول مرة اخرى'
+    'try_again' => 'حاول مرة اخرى',
+    'complete_steps' => 'اكمل الخطوات السابقة',
+
 
 
 ];
