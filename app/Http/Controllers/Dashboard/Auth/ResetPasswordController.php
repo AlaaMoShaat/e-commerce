@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Dashboard\Auth;
 
-use App\Models\Admin;
-use Illuminate\Http\Request;
+
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ForgotPasswordRequest;
 use App\Services\Auth\PasswordService;
-use Illuminate\Support\Facades\Hash;
 
 class ResetPasswordController extends Controller
 {
@@ -19,11 +17,11 @@ class ResetPasswordController extends Controller
     public function showResetForm($email)
     {
         if (!session()->has('password_reset_email') || !session()->has('password_reset_verified')) {
-            return redirect()->route('dashboard.password.email')->with('error', 'Please complete the above steps.');
+            return redirect()->route('dashboard.password.email')->with('error', __('auth.complete_steps'));
         }
 
         if (session('password_reset_email') !== $email) {
-            return redirect()->route('dashboard.password.email')->with('error', 'Email does not match.');
+            return redirect()->route('dashboard.password.email')->with('error', __('auth.verify_email'));
         }
 
         return view('dashboard.auth.password.reset', compact('email'));
