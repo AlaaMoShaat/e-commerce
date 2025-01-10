@@ -28,6 +28,9 @@ class ResetPasswordController extends Controller
     }
     public function resetPassword(ForgotPasswordRequest $request)
     {
+        if (session('password_reset_email') !== $request->email) {
+            return redirect()->route('dashboard.password.email')->with('error', __('auth.verify_email'));
+        }
         $data = $request->only('email', 'password');
 
         $admin = $this->passwordService->resetPassword($data);
