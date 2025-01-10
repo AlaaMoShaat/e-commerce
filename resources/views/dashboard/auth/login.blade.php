@@ -1,6 +1,6 @@
 @extends('layouts.dashboard.auth.auth')
 
-@section('title', 'Login')
+<title>{{ __('auth.login') }}</title>
 
 @section('content')
     <div class="app-content content">
@@ -20,7 +20,7 @@
                                     <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2">
                                         <span>{{ __('auth.login_with_ecom') }}</span>
                                     </h6>
-                                    @include('dashboard.includes.alert-success')
+                                    @include('dashboard.includes.validations')
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
@@ -30,9 +30,6 @@
                                             <fieldset class="form-group position-relative has-icon-left">
                                                 <input name="email" type="text" class="form-control input-lg"
                                                     id="user-name" placeholder="{{ __('auth.email') }}" tabindex="1">
-                                                @include('dashboard.includes.alert-danger', [
-                                                    'field' => 'email',
-                                                ])
                                                 <div class="form-control-position">
                                                     <i class="ft-user"></i>
                                                 </div>
@@ -41,9 +38,6 @@
                                             <fieldset class="form-group position-relative has-icon-left">
                                                 <input name="password" type="password" class="form-control input-lg"
                                                     id="password" placeholder="{{ __('auth.password') }}" tabindex="2">
-                                                @error('password')
-                                                    <small class="text-danger">{{ $message }}</small>
-                                                @enderror
                                                 <div class="form-control-position">
                                                     <i class="la la-key"></i>
                                                 </div>

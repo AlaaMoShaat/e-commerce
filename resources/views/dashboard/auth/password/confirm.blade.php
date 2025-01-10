@@ -1,5 +1,5 @@
 @extends('layouts.dashboard.auth.auth')
-@section('title', 'Confirm Code')
+<title>{{ __('auth.verify_code') }}</title>
 
 @section('content')
     <div class="app-content content">
@@ -35,8 +35,7 @@
                                                     <i class="ft-mail"></i>
                                                 </div>
                                             </fieldset>
-                                            @include('dashboard.includes.alert-success')
-                                            @include('dashboard.includes.alert-danger')
+                                            @include('dashboard.includes.validations')
                                             <button type="submit" class="btn btn-outline-info btn-lg btn-block"><i
                                                     class="ft-unlock"></i>{{ __('auth.verify_code') }}</button>
                                         </form>

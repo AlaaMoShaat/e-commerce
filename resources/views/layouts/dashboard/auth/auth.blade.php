@@ -11,7 +11,7 @@
         content="admin template, modern admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
     <meta name="author" content="PIXINVENT">
     <title>
-        Dashboard | @yield('title')
+        {{ __('static.global.site_name') }} | {{ __('static.global.dashboard') }} | @yield('title')
     </title>
     <link rel="apple-touch-icon" href="{{ asset('assets/dashboard') }}/images/ico/apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/dashboard') }}/images/ico/favicon.ico">
@@ -38,11 +38,17 @@
     <!-- BEGIN Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets') }}/css/style-rtl.css">
     <!-- END Custom CSS-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="vertical-layout vertical-menu-modern 1-column  bg-cyan bg-lighten-2 menu-expanded fixed-navbar"
     data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
     <!-- fixed-top-->
+
+    @include('dashboard.includes.falsher')
+
+
+
     <nav
         class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-dark navbar-shadow">
         <div class="navbar-wrapper">

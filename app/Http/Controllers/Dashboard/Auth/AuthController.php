@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Dashboard\Auth;
 
 use Illuminate\Http\Request;
+use App\Services\Auth\AuthService;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\Dashboard\Admin\CreateAdminRequest;
-use App\Services\Auth\AuthService;
-use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use App\Http\Requests\Dashboard\CreateAdminRequest;
 
 class AuthController extends Controller implements HasMiddleware
 {
@@ -38,6 +39,7 @@ class AuthController extends Controller implements HasMiddleware
         $remember_me = $request->remember_me;
 
         if ($this->authService->login($credenstials, 'admin', $remember_me)) {
+            Session::flash('success', __('auth.logged_in'));
             return redirect()->intended(route('dashboard.home'));
         } else {
             return redirect()->back()->withErrors(['email' => __('auth.failed')]);
@@ -47,6 +49,7 @@ class AuthController extends Controller implements HasMiddleware
     public function logout()
     {
         $this->authService->logout('admin');
+        Session::flash('success', __('auth.logged_out'));
         return redirect()->route('dashboard.login');
     }
 }

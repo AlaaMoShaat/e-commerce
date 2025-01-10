@@ -1,52 +1,28 @@
 <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class=" nav-item"><a href="index.html"><i class="la la-home"></i><span class="menu-title"
-                        data-i18n="nav.dash.main">Dashboard</span><span
-                        class="badge badge badge-info badge-pill float-right mr-2">3</span></a>
-                <ul class="menu-content">
-                    <li class="active"><a class="menu-item" href="dashboard-ecommerce.html"
-                            data-i18n="nav.dash.ecommerce">eCommerce</a>
-                    </li>
-                    <li><a class="menu-item" href="dashboard-crypto.html" data-i18n="nav.dash.crypto">Crypto</a>
-                    </li>
-                    <li><a class="menu-item" href="dashboard-sales.html" data-i18n="nav.dash.sales">Sales</a>
-                    </li>
-                </ul>
-            </li>
-            <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title"
-                        data-i18n="nav.templates.main">Templates</span></a>
-                <ul class="menu-content">
-                    <li><a class="menu-item" href="#" data-i18n="nav.templates.vert.main">Vertical</a>
-                        <ul class="menu-content">
-                            <li><a class="menu-item" href="../vertical-menu-template"
-                                    data-i18n="nav.templates.vert.classic_menu">Classic Menu</a>
-                            </li>
-                            <li><a class="menu-item" href="../vertical-modern-menu-template">Modern Menu</a>
-                            </li>
-                            <li><a class="menu-item" href="../vertical-compact-menu-template"
-                                    data-i18n="nav.templates.vert.compact_menu">Compact Menu</a>
-                            </li>
-                            <li><a class="menu-item" href="../vertical-content-menu-template"
-                                    data-i18n="nav.templates.vert.content_menu">Content Menu</a>
-                            </li>
-                            <li><a class="menu-item" href="../vertical-overlay-menu-template"
-                                    data-i18n="nav.templates.vert.overlay_menu">Overlay Menu</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a class="menu-item" href="#" data-i18n="nav.templates.horz.main">Horizontal</a>
-                        <ul class="menu-content">
-                            <li><a class="menu-item" href="../horizontal-menu-template"
-                                    data-i18n="nav.templates.horz.classic">Classic</a>
-                            </li>
-                            <li><a class="menu-item" href="../horizontal-menu-template-nav"
-                                    data-i18n="nav.templates.horz.top_icon">Full Width</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
+            @can('home')
+                <li class="{{ isActiveRoute('dashboard.home') }} nav-item"><a href="{{ route('dashboard.home') }}"><i
+                            class="la la-home"></i><span class="menu-title"
+                            data-i18n="nav.dash.main">{{ __('static.global.dashboard') }}</span></a>
+                </li>
+            @endcan
+            @can('roles')
+                <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title"
+                            data-i18n="nav.templates.main">{{ __('static.global.roles') }}</span></a>
+                    <ul class="menu-content">
+
+                        <li class="{{ isActiveRoute('dashboard.roles.index') }}"><a class="menu-item"
+                                href="{{ route('dashboard.roles.index') }}"
+                                data-i18n="nav.templates.vert.main">{{ __('static.global.roles') }}</a>
+                        </li>
+                        <li class="{{ isActiveRoute('dashboard.roles.create') }}"><a class="menu-item"
+                                href="{{ route('dashboard.roles.create') }}"
+                                data-i18n="nav.templates.vert.main">{{ __('static.authorization.create_role') }}</a>
+                        </li>
+                    </ul>
+                </li>
+            @endcan
             <li class=" navigation-header">
                 <span data-i18n="nav.category.layouts">Layouts</span><i class="la la-ellipsis-h ft-minus"
                     data-toggle="tooltip" data-placement="right" data-original-title="Layouts"></i>
@@ -121,8 +97,8 @@
                     <li><a class="menu-item" href="layout-boxed.html" data-i18n="nav.page_layouts.boxed_layout">Boxed
                             layout</a>
                     </li>
-                    <li><a class="menu-item" href="layout-static.html"
-                            data-i18n="nav.page_layouts.static_layout">Static layout</a>
+                    <li><a class="menu-item" href="layout-static.html" data-i18n="nav.page_layouts.static_layout">Static
+                            layout</a>
                     </li>
                     <li class="navigation-divider"></li>
                     <li><a class="menu-item" href="layout-light.html" data-i18n="nav.page_layouts.light_layout">Light
@@ -993,8 +969,8 @@
                     </li>
                 </ul>
             </li>
-            <li class=" nav-item"><a href="form-repeater.html"><i class="la la-repeat"></i><span
-                        class="menu-title" data-i18n="nav.form_repeater.main">Form Repeater</span></a>
+            <li class=" nav-item"><a href="form-repeater.html"><i class="la la-repeat"></i><span class="menu-title"
+                        data-i18n="nav.form_repeater.main">Form Repeater</span></a>
             </li>
             <li class=" navigation-header">
                 <span data-i18n="nav.category.tables">Tables</span><i class="la la-ellipsis-h ft-minus"

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('authorizations', function (Blueprint $table) {
             $table->id();
             $table->string('role')->unique();
             $table->json('permession');

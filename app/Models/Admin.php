@@ -3,9 +3,10 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Authorization;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class Admin extends Authenticatable
 {
@@ -45,5 +46,26 @@ class Admin extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function authorization()
+    {
+        return $this->belongsTo(Authorization::class, 'role_id');
+    }
+
+    public function hasAccess($permession_to_check)  // products , users , admins
+    {
+
+        $authorization = $this->authorization;
+
+        if (!$authorization) {
+            return false;
+        }
+
+        foreach ($authorization->permession as $permession) {
+            if ($permession_to_check == $permession ?? false) {
+                return true;
+            }
+        }
     }
 }

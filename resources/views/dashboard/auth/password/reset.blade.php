@@ -1,5 +1,5 @@
 @extends('layouts.dashboard.auth.auth')
-@section('title', 'Reset Password')
+<title>{{ __('auth.reset_password') }}</title>
 
 @section('content')
     <div class="app-content content">
@@ -20,11 +20,7 @@
                                         <span>{{ __('auth.reset_password') }}</span>
                                     </h6>
                                 </div>
-                                @if (session()->has('emailError'))
-                                    <div class="alert alert-danger">
-                                        {{ session('emailError') }}
-                                    </div>
-                                @endif
+                                @include('dashboard.includes.validations')
                                 <div class="card-content">
                                     <div class="card-body">
                                         <form action="{{ route('dashboard.password.reset') }}" method="POST"
@@ -39,11 +35,6 @@
                                                 <div class="form-control-position">
                                                     <i class="ft-mail"></i>
                                                 </div>
-                                                @error('password')
-                                                    <div class="text-dangere">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
                                             </fieldset>
                                             <fieldset class="form-group position-relative has-icon-left">
                                                 <input name="password_confirmation" type="password"

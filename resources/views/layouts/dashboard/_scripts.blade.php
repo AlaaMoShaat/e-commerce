@@ -18,3 +18,5 @@
  <!-- BEGIN PAGE LEVEL JS-->
  <script src="{{ asset('assets/dashboard') }}/js/scripts/pages/dashboard-ecommerce.js" type="text/javascript"></script>
  <!-- END PAGE LEVEL JS-->
+
+ <script src="{{ asset('assets/js/scripts.js') }}"></script>

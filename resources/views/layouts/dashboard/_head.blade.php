@@ -6,7 +6,7 @@
 <meta name="keywords"
     content="admin template, modern admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
 <meta name="author" content="PIXINVENT">
-<title>Dashboard eCommerce @yield('title')</title>
+<title> {{ __('static.global.site_name') }} | {{ __('static.global.dashboard') }} | @yield('title')</title>
 <link rel="apple-touch-icon" href="{{ asset('assets/dashboard') }}/images/ico/apple-icon-120.png">
 <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/dashboard') }}/images/ico/favicon.ico">
 <link
@@ -22,6 +22,13 @@
 <link rel="stylesheet" type="text/css"
     href="{{ asset('assets/dashboard') }}/vendors/css/charts/chartist-plugin-tooltip.css">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard') }}/fonts/simple-line-icons/style.css">
+<link rel="stylesheet" type="text/css"
+    href="{{ asset('assets/dashboard') }}/css-rtl/plugins/forms/checkboxes-radios.css">
+<!-- BEGIN VENDOR CSS-->
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard') }}/css-rtl/vendors.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard') }}/vendors/css/forms/icheck/icheck.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard') }}/vendors/css/forms/icheck/custom.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 @if (config('app.locale') == 'ar')
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard') }}/css-rtl/vendors.css">
@@ -31,8 +38,6 @@
         href="{{ asset('assets/dashboard') }}/css-rtl/core/menu/menu-types/vertical-menu-modern.css">
     <link rel="stylesheet" type="text/css"
         href="{{ asset('assets/dashboard') }}/css-rtl/core/colors/palette-gradient.css">
-    <link rel="stylesheet" type="text/css"
-        href="{{ asset('assets/dashboard') }}/css-rtl/core/colors/palette-gradient.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard') }}/css-rtl/pages/timeline.css">
     <link rel="stylesheet" type="text/css"
         href="{{ asset('assets/dashboard') }}/css-rtl/pages/dashboard-ecommerce.css">
@@ -40,7 +45,6 @@
 @else
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard') }}/css/vendors.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard') }}/css/app.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard') }}/css/custom.css">
     <link rel="stylesheet" type="text/css"
         href="{{ asset('assets/dashboard') }}/css/core/menu/menu-types/vertical-menu-modern.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard') }}/css/core/colors/palette-gradient.css">

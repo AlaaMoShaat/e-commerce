@@ -6,7 +6,7 @@ use App\Http\Controllers\Dashboard\Auth\AuthController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Dashboard\Auth\ResetPasswordController;
 use App\Http\Controllers\Dashboard\Auth\ForgotPasswordController;
-
+use App\Http\Controllers\Dashboard\AuthorizationController;
 
 Route::group(
     [
@@ -19,10 +19,17 @@ Route::group(
         Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
         Route::post('login', [AuthController::class, 'login'])->name('login.post');
         Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+
         ################################ Protected Routes #################################
         Route::group(['middleware' => 'auth:admin'], function () {
+
             ################################ Home Routes #################################
             Route::get('home', [HomeController::class, 'index'])->name('home');
+
+            ################################ Roles Routes #################################
+            Route::group(['middleware' => 'can:roles'], function () {
+                Route::resource('roles', AuthorizationController::class);
+            });
         });
 
         ################################ Forget Password Routes #################################

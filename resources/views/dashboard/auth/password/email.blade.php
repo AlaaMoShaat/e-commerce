@@ -1,5 +1,5 @@
 @extends('layouts.dashboard.auth.auth')
-@section('title', 'Email')
+<title>{{ __('auth.verify_email') }}</title>
 
 @section('content')
     <div class="app-content content">
@@ -20,6 +20,7 @@
                                         <span>{{ __('auth.send_reset_link') }}</span>
                                     </h6>
                                 </div>
+                                @include('dashboard.includes.validations')
                                 <div class="card-content">
                                     <div class="card-body">
                                         <form action="{{ route('dashboard.password.sendCode') }}" method="POST"
@@ -33,7 +34,6 @@
                                                     <i class="ft-mail"></i>
                                                 </div>
                                             </fieldset>
-                                            @include('dashboard.includes.alert-danger')
                                             <button type="submit" class="btn btn-outline-info btn-lg btn-block"><i
                                                     class="ft-unlock"></i>{{ __('auth.send_reset_link') }}</button>
                                         </form>
