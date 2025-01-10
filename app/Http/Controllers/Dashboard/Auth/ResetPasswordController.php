@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Dashboard\Auth;
 
-use App\Models\Admin;
-use Illuminate\Http\Request;
+
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ForgotPasswordRequest;
 use App\Services\Auth\PasswordService;
-use Illuminate\Support\Facades\Hash;
 
 class ResetPasswordController extends Controller
 {
