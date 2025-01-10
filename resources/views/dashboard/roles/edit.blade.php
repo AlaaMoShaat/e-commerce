@@ -3,7 +3,7 @@
 
 @section('content')
     @include('dashboard.includes.breadcrumb', [
-        'title' => __('static.authorization.create_role'),
+        'title' => __('static.authorization.edit_role'),
         'breadcrumbs' => [
             ['title' => __('static.global.home'), 'url' => route('dashboard.home')],
             ['title' => __('static.global.roles'), 'url' => route('dashboard.roles.index')],
