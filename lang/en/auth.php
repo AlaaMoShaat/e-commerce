@@ -39,4 +39,5 @@ return [
     'try_again' => 'Try Again Later',
     'logged_in' => 'You have logged in successfully!',
     'logged_out' => 'You have logged out successfully!',
+    'complete_steps' => 'Please complete the above steps',
 ];
