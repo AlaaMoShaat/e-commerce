@@ -18,6 +18,8 @@ return [
         '404' => 'Sorry! The requested page was not found.',
         '500' => 'Sorry! An error occurred in the system. Please try again.',
         '429' => 'Too many requests! Please try again later.',
+        '419' => 'Sorry! Your session has expired. Please refresh the page and try again.',
+
     ],
     'actions' => [
         'title' => 'Actions',
@@ -42,4 +44,13 @@ return [
         'related_admins' => 'Related Admins',
         'create_new_role' => 'Create New Role',
     ],
+    'admins' => [
+        'title' => 'Admins',
+        'create_admin' => 'Create Admin',
+        'edit_admin' => 'Edit Admin',
+        'admin_name_ar' => 'Admin Name in Arabic',
+        'admin_name_en' => 'Admin Name in English',
+        'create_new_admin' => 'Create New Admin',
+    ],
+
 ];

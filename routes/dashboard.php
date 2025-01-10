@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\Auth\AuthController;
@@ -30,6 +31,14 @@ Route::group(
             Route::group(['middleware' => 'can:roles'], function () {
                 Route::resource('roles', AuthorizationController::class);
             });
+            ################################ End Roles Routes #############################
+
+            ################################ Admins Routes #################################
+            Route::group(['middleware' => 'can:admins'], function () {
+                Route::resource('admins', AdminController::class);
+                Route::get('admins/{id}/status', [AdminController::class, 'changeStatus'])->name('admins.changeStatus');
+            });
+            ################################ End Admins Routes #############################
         });
 
         ################################ Forget Password Routes #################################
