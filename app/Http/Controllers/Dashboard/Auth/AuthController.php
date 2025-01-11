@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Routing\Controllers\HasMiddleware;
-use App\Http\Requests\Dashboard\CreateAdminRequest;
+use App\Http\Requests\Dashboard\LoginAdminRequest;
 
 class AuthController extends Controller implements HasMiddleware
 {
@@ -31,7 +31,7 @@ class AuthController extends Controller implements HasMiddleware
         return view('dashboard.auth.login');
     }
 
-    public function login(CreateAdminRequest $request)
+    public function login(LoginAdminRequest $request)
     {
 
         $credenstials = $request->only(['email', 'password']);

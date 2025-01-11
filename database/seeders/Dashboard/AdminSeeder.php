@@ -19,12 +19,16 @@ class AdminSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@admin.com',
             'password' => bcrypt('password'),
+            'phone' => '+201021965455',
+            'status' => '1',
             'role_id' => $first_role_id,
         ]);
         Admin::create([
             'name' => 'Alaa',
             'email' => 'alaa@admin.com',
             'password' => bcrypt('password'),
+            'phone' => '+201021965456',
+            'status' => '1',
             'role_id' => $first_role_id,
         ]);
     }

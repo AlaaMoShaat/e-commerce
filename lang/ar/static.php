@@ -10,7 +10,14 @@ return [
         'roles' => 'الأدوار',
         'select_all' => 'تحديد الكل',
         'created_at' => 'تاريخ الانشاء',
-        'back_to_home' => 'الرجوع للصفحة الرئيسية'
+        'email' => 'البريد الاكتروني',
+        'password' => 'كلمة المرور',
+        'password_confirmation' => 'تأكيد كلمة المرور',
+        'phone' => 'رقم الهاتف',
+        'status' => 'الحالة',
+        'back_to_home' => 'الرجوع للصفحة الرئيسية',
+        'no_items' => 'لا يوجد',
+        'select' => 'اختار من هنا',
 
     ],
     'errors' => [
@@ -48,6 +55,8 @@ return [
         'title' => 'المسؤولين',
         'create_admin' => 'إنشاء مسؤول',
         'edit_admin' => 'تعديل المسؤول',
+        'admin_name' => 'اسم المسؤول',
+        'role' => 'الدور',
         'admin_name_ar' => 'اسم المسؤول بالعربية',
         'admin_name_en' => 'اسم المسؤول بالانجليزية',
         'create_new_admin' => 'انشئ مسؤول جديد',

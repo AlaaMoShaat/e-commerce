@@ -1,5 +1,5 @@
 @extends('layouts.dashboard.auth.auth')
-<title>403</title>
+<title>404</title>
 @section('content')
     <div class="app-content content">
         <div class="content-wrapper">

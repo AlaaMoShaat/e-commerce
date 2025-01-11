@@ -2,11 +2,15 @@
 
 <title>{{ __('static.global.home') }}</title>
 
-@section('content')
+@section('breadcrumbs')
     @include('dashboard.includes.breadcrumb', [
         'title' => __('static.global.home'),
         'breadcrumbs' => [['title' => __('static.global.home'), 'url' => '']],
     ])
+@endsection
+
+
+@section('content')
     <!-- eCommerce statistic -->
     <div class="row">
         <div class="col-xl-3 col-lg-6 col-12">

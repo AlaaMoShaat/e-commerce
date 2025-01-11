@@ -22,10 +22,8 @@
 <link rel="stylesheet" type="text/css"
     href="{{ asset('assets/dashboard') }}/vendors/css/charts/chartist-plugin-tooltip.css">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard') }}/fonts/simple-line-icons/style.css">
-<link rel="stylesheet" type="text/css"
-    href="{{ asset('assets/dashboard') }}/css-rtl/plugins/forms/checkboxes-radios.css">
+
 <!-- BEGIN VENDOR CSS-->
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard') }}/css-rtl/vendors.css">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard') }}/vendors/css/forms/icheck/icheck.css">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard') }}/vendors/css/forms/icheck/custom.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -42,6 +40,8 @@
     <link rel="stylesheet" type="text/css"
         href="{{ asset('assets/dashboard') }}/css-rtl/pages/dashboard-ecommerce.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets') }}/css/style-rtl.css">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('assets/dashboard') }}/css-rtl/plugins/forms/checkboxes-radios.css">
 @else
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard') }}/css/vendors.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard') }}/css/app.css">
@@ -52,4 +52,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard') }}/css/pages/timeline.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard') }}/css/pages/dashboard-ecommerce.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets') }}/css/style.css">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('assets/dashboard') }}/css/plugins/forms/checkboxes-radios.css">
 @endif

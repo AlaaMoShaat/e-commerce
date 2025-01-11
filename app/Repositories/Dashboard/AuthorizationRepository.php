@@ -17,7 +17,7 @@ class AuthorizationRepository
     }
     public function getRoles()
     {
-        return Authorization::paginate(6);
+        return Authorization::orderBy('id', 'desc')->paginate(6);
     }
     public function createRole($request)
     {

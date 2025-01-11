@@ -17,13 +17,12 @@
 
     <div class="app-content content">
         <div class="content-wrapper">
+            @yield('breadcrumbs')
             <div class="content-body">
                 @yield('content')
             </div>
         </div>
     </div>
-
-
     @include('layouts.dashboard._footer')
     @include('layouts.dashboard._scripts')
 </body>

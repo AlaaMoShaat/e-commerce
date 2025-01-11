@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Authorization;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -12,6 +13,9 @@ class Admin extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
+    use HasTranslations;
+
+    public $translatable = ['name'];
 
     /**
      * The attributes that are mass assignable.
@@ -22,7 +26,9 @@ class Admin extends Authenticatable
         'name',
         'email',
         'password',
-        'role_id'
+        'role_id',
+        'status',
+        'phone',
     ];
 
     /**
@@ -53,9 +59,13 @@ class Admin extends Authenticatable
         return $this->belongsTo(Authorization::class, 'role_id');
     }
 
+    public function getStatusAttribute($value)
+    {
+        return $value == 1 ? 'active' : 'inactive';
+    }
+
     public function hasAccess($permession_to_check)  // products , users , admins
     {
-
         $authorization = $this->authorization;
 
         if (!$authorization) {

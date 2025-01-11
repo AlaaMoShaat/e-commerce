@@ -42,7 +42,7 @@ class AuthorizationController extends Controller
             return redirect()->back()->with('error', __('messages.failed_msg'));
         }
 
-        return redirect()->back()->with('success', __('messages.success_msg'));
+        return redirect()->route('dashboard.roles.index')->with('success', __('messages.success_msg'));
     }
 
     /**

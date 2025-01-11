@@ -1,7 +1,7 @@
 @extends('layouts.dashboard.app')
 <title>{{ __('static.admins.edit_admin') }}</title>
 
-@section('content')
+@section('breadcrumbs')
     @include('dashboard.includes.breadcrumb', [
         'title' => __('static.admins.edit_admin'),
         'breadcrumbs' => [
@@ -10,90 +10,128 @@
             ['title' => __('static.admins.edit_admin'), 'url' => ''],
         ],
     ])
+@endsection
 
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title" id="basic-layout-colored-form-control">{{ __('static.admins.edit_admin') }}
-                </h4>
-                <div class="heading-elements">
-                    <ul class="list-inline mb-0">
-                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                        <li><a data-action="close"><i class="ft-x"></i></a></li>
-                    </ul>
+@section('content')
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title" id="basic-layout-colored-form-control">{{ __('static.admins.edit_admin') }}
+                    </h4>
+                    <div class="heading-elements">
+                        <ul class="list-inline mb-0">
+                            <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                            <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                            <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            @include('dashboard.includes.validations')
-            <div class="card-content collapse show">
-                <div class="card-body">
-                    <form action="{{ route('dashboard.admins.update', $role->id) }}" method="POST" class="form">
-                        @csrf
-                        @method('PUT')
-                        <div class="form-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="userinput1">{{ __('static.admins.admin_name_en') }}</label>
-                                        <input value="{{ $role->getTranslation('name', 'en') }}" type="text"
-                                            id="userinput1" class="form-control border-primary"
-                                            placeholder="{{ __('static.admins.admin_name_en') }}" name="name[en]">
+                @include('dashboard.includes.validations')
+                <div class="card-content collapse show">
+                    <div class="card-body">
+                        <form action="{{ route('dashboard.admins.update', $admin->id) }}" method="POST" class="form">
+                            @csrf
+                            @method('PUT')
+                            <div class="form-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="admin_name_en">{{ __('static.admins.admin_name_en') }}</label>
+                                            <input type="text" value="{{ $admin->getTranslation('name', 'en') }}"
+                                                id="admin_name_en" class="form-control border-primary"
+                                                placeholder="{{ __('static.admins.admin_name_en') }}" name="name[en]">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="userinput1">{{ __('static.admins.admin_name_ar') }}</label>
-                                        <input value="{{ $role->getTranslation('name', 'ar') }}" type="text"
-                                            id="userinput1" class="form-control border-primary"
-                                            placeholder="{{ __('static.admins.admin_name_ar') }}" name="name[ar]">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4 class="card-title">{{ __('static.authorization.select_permassions') }}</h4>
-                                    </div>
-                                    <div class="card-content">
-                                        <div class="card-body">
-                                            <fieldset>
-                                                <input id="select-all" type="checkbox">
-                                                <label for="select-all">{{ __('static.global.select_all') }}</label>
-                                            </fieldset>
-                                            <div class="row skin skin-line">
-                                                @foreach (__('permessions') as $permessionKey => $permession)
-                                                    <div class="col-3">
-                                                        <fieldset>
-                                                            <input @checked(in_array($permessionKey, $role->permession)) class="permession-checkbox"
-                                                                value="{{ $permessionKey }}" name="permessions[]"
-                                                                type="checkbox" id="input-{{ $loop->iteration }}">
-                                                            <label
-                                                                for="input-{{ $loop->iteration }}">{{ $permession }}</label>
-                                                        </fieldset>
-                                                    </div>
-                                                @endforeach
-                                            </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="admin_name_ar">{{ __('static.admins.admin_name_ar') }}</label>
+                                            <input type="text" value="{{ $admin->getTranslation('name', 'ar') }}"
+                                                id="admin_name_ar" class="form-control border-primary"
+                                                placeholder="{{ __('static.admins.admin_name_ar') }}" name="name[ar]">
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="email">{{ __('static.global.email') }}</label>
+                                            <input type="text" value="{{ $admin->email }}" id="email"
+                                                class="form-control border-primary"
+                                                placeholder="{{ __('static.global.email') }}" name="email">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="phone">{{ __('static.global.phone') }}</label>
+                                            <input type="text" value="{{ $admin->phone }}" id="phone international-mask"
+                                                class="form-control border-primary international-inputmask"
+                                                placeholder="{{ __('static.global.phone') }}" name="phone">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="password">{{ __('static.global.password') }}</label>
+                                            <input type="password" id="password international-mask"
+                                                class="form-control border-primary international-inputmask"
+                                                placeholder="{{ __('static.global.password') }}" name="password">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label
+                                                for="password_confirmation">{{ __('static.global.password_confirmation') }}</label>
+                                            <input type="password" id="password international-mask"
+                                                class="form-control border-primary international-inputmask"
+                                                placeholder="{{ __('static.global.password_confirmation') }}"
+                                                name="password_confirmation">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="role_id">{{ __('static.admins.role') }}</label>
+                                            <select id="role_id" name="role_id" class="form-control">
+                                                <option selected disabled>{{ __('static.global.select') }}</option>
+                                                @forelse ($authorizations as $authorization)
+                                                    <option @selected($admin->role_id == $authorization->id) value="{{ $authorization->id }}">
+                                                        {{ $authorization->role }}
+                                                    </option>
+                                                @empty
+                                                    <option disabled selected>{{ __('static.global.no_items') }}</option>
+                                                @endforelse
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label style="display: block"
+                                                for="status">{{ __('static.global.status') }}</label>
+                                            @php
+                                                $isActive = $admin->status;
+                                            @endphp
+                                            @include('dashboard.includes.status-btns', [
+                                                'isActive' => $isActive,
+                                            ])
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-actions right">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="la la-check-square-o"></i> {{ __('static.actions.edit') }}
+                                    </button>
+                                </div>
                             </div>
-                            <div class="form-actions right">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="la la-check-square-o"></i> {{ __('static.actions.edit') }}
-                                </button>
-                            </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <script>
-        document.getElementById('select-all').addEventListener('change', function() {
-            const checkboxes = document.querySelectorAll('.permession-checkbox');
-            checkboxes.forEach(checkbox => {
-                checkbox.checked = this.checked;
-            });
-        });
-    </script>
 @endsection

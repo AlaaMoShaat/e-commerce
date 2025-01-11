@@ -23,6 +23,22 @@
                     </ul>
                 </li>
             @endcan
+            @can('admins')
+                <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title"
+                            data-i18n="nav.templates.main">{{ __('static.admins.title') }}</span></a>
+                    <ul class="menu-content">
+
+                        <li class="{{ isActiveRoute('dashboard.admins.index') }}"><a class="menu-item"
+                                href="{{ route('dashboard.admins.index') }}"
+                                data-i18n="nav.templates.vert.main">{{ __('static.admins.title') }}</a>
+                        </li>
+                        <li class="{{ isActiveRoute('dashboard.admins.create') }}"><a class="menu-item"
+                                href="{{ route('dashboard.admins.create') }}"
+                                data-i18n="nav.templates.vert.main">{{ __('static.admins.create_admin') }}</a>
+                        </li>
+                    </ul>
+                </li>
+            @endcan
             <li class=" navigation-header">
                 <span data-i18n="nav.category.layouts">Layouts</span><i class="la la-ellipsis-h ft-minus"
                     data-toggle="tooltip" data-placement="right" data-original-title="Layouts"></i>
@@ -97,7 +113,8 @@
                     <li><a class="menu-item" href="layout-boxed.html" data-i18n="nav.page_layouts.boxed_layout">Boxed
                             layout</a>
                     </li>
-                    <li><a class="menu-item" href="layout-static.html" data-i18n="nav.page_layouts.static_layout">Static
+                    <li><a class="menu-item" href="layout-static.html"
+                            data-i18n="nav.page_layouts.static_layout">Static
                             layout</a>
                     </li>
                     <li class="navigation-divider"></li>
