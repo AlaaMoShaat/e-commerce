@@ -16,7 +16,7 @@ class CountryRepository
 
     public function getCountries()
     {
-        $countries = Country::when(!empty(request()->keyword), function($query) {
+        $countries = Country::withCount(['governorates', 'users'])->when(!empty(request()->keyword), function($query) {
             $query->where('name', 'LIKE', '%' . request()->keyword . '%');
         })->paginate(6);
         return $countries;
@@ -24,7 +24,7 @@ class CountryRepository
 
     public function getCountry($id)
     {
-        return Country::with('governorates')->find($id);
+        return Country::with(['governorates', 'users'])->find($id);
     }
 
     public function createCountry($data)
