@@ -26,4 +26,5 @@ return [
     'socials' => 'Manage Socials',
     'settings' => 'Manage Settings',
     'menus' => 'Manage Menus',
+    'region' => 'Manage Shipping & Region',
 ];

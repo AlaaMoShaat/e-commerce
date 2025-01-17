@@ -8,6 +8,10 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Dashboard\Auth\ResetPasswordController;
 use App\Http\Controllers\Dashboard\Auth\ForgotPasswordController;
 use App\Http\Controllers\Dashboard\AuthorizationController;
+use App\Http\Controllers\Dashboard\Region\CityController;
+use App\Http\Controllers\Dashboard\Region\CountryController;
+use App\Http\Controllers\Dashboard\Region\GovernorateController;
+use App\Http\Controllers\Dashboard\WorldController;
 
 Route::group(
     [
@@ -16,10 +20,30 @@ Route::group(
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ],
     function () {
-        ################################ Auth #################################
+        ################################ Auth Routes #################################
         Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
         Route::post('login', [AuthController::class, 'login'])->name('login.post');
         Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+        ################################ End Auth Routes #################################
+
+
+          ################################ Forget Password Routes #################################
+          Route::prefix('password')->as('password.')->group(function () {
+            Route::controller(ForgotPasswordController::class)->group(function () {
+                Route::get('email', 'showEmailForm')->name('email');
+                Route::post('email', 'sendCode')->name('sendCode');
+                Route::get('verify/{email}', 'showCodeForm')->name('showCodeForm');
+                Route::post('verify', 'verifyCode')->name('verifyCode');
+            });
+            ################################ End Forget Password Routes ############################
+
+            ################################ Reset Password Routes #################################
+            Route::controller(ResetPasswordController::class)->group(function () {
+                Route::get('reset/{email}', 'showResetForm')->name('showResetForm');
+                Route::post('reset', 'resetPassword')->name('reset');
+            });
+            ################################ End Reset Password Routes #############################
+        });
 
         ################################ Protected Routes #################################
         Route::group(['middleware' => 'auth:admin'], function () {
@@ -33,27 +57,38 @@ Route::group(
             });
             ################################ End Roles Routes #############################
 
+
             ################################ Admins Routes #################################
             Route::group(['middleware' => 'can:admins'], function () {
                 Route::resource('admins', AdminController::class);
                 Route::get('admins/{id}/status', [AdminController::class, 'changeStatus'])->name('admins.changeStatus');
             });
             ################################ End Admins Routes #############################
+
+
+            ################################ Shipping & Region Routes #################################
+            Route::group(['middleware'=>'can:region'], function () {
+                Route::group([],function () {
+                    Route::resource('countries', CountryController::class);
+                    Route::get('countries/{id}/status', [CountryController::class, 'changeStatus'])->name('countries.changeStatus');
+                });
+
+                Route::group([],function () {
+                    Route::resource('governorates', GovernorateController::class);
+                    Route::get('governorates/{id}/status', [GovernorateController::class, 'changeStatus'])->name('governorates.changeStatus');
+                    Route::put('governorates/{id}/shipping-price', [GovernorateController::class, 'changeShippingPrice'])->name('governorates.shipping.price');
+
+                });
+
+                Route::group([],function () {
+                    Route::resource('cities', CityController::class);
+                    Route::get('cities/{id}/status', [CityController::class, 'changeStatus'])->name('cities.changeStatus');
+                });
+            });
+            ################################ End Shipping & Region Routes #################################
+
         });
 
-        ################################ Forget Password Routes #################################
-        Route::prefix('password')->as('password.')->group(function () {
-            Route::controller(ForgotPasswordController::class)->group(function () {
-                Route::get('email', 'showEmailForm')->name('email');
-                Route::post('email', 'sendCode')->name('sendCode');
-                Route::get('verify/{email}', 'showCodeForm')->name('showCodeForm');
-                Route::post('verify', 'verifyCode')->name('verifyCode');
-            });
-            ################################ Reset Password Routes #################################
-            Route::controller(ResetPasswordController::class)->group(function () {
-                Route::get('reset/{email}', 'showResetForm')->name('showResetForm');
-                Route::post('reset', 'resetPassword')->name('reset');
-            });
-        });
+
     }
 );

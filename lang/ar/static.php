@@ -18,7 +18,12 @@ return [
         'back_to_home' => 'الرجوع للصفحة الرئيسية',
         'no_items' => 'لا يوجد',
         'select' => 'اختار من هنا',
-
+        'sure' => 'هل انت متأكد!!',
+        'users' => 'المستخدمين',
+        'search' => 'بحث',
+        'price'   => 'السعر',
+        'sipping_price' => 'سعر الشحن',
+        'change_price' => 'تغيير سعر الشحن',
     ],
     'errors' => [
         '403' => 'عذرًا! ليس لديك صلاحية للوصول إلى هذه الصفحة.',
@@ -35,6 +40,7 @@ return [
         'show' => 'عرض',
         'save' => 'حفظ',
         'change_status' => 'تغيير الحالة',
+        'cancel' => 'الغاء',
     ],
     'status' => [
         'title' => 'الحالة',
@@ -49,7 +55,7 @@ return [
         'permassions' => 'الصلاحيات',
         'select_permassions' => 'تحديد الصلاحيات',
         'related_admins' => 'الحاصلين عليها',
-        'create_new_role' => 'انشئ دور جديد',
+        'create_new_role' => 'إنشاء دور جديد',
     ],
     'admins' => [
         'title' => 'المسؤولين',
@@ -59,6 +65,46 @@ return [
         'role' => 'الدور',
         'admin_name_ar' => 'اسم المسؤول بالعربية',
         'admin_name_en' => 'اسم المسؤول بالانجليزية',
-        'create_new_admin' => 'انشئ مسؤول جديد',
+        'create_new_admin' => 'إنشاء مسؤول جديد',
     ],
+    'regions' => [
+        'title' => 'المناطق',
+
+        'countries' => 'الدول',
+        'country_name' => 'اسم الدولة',
+        'country_name_ar' => 'اسم الدولة باللغة العربية',
+        'country_name_en' => 'اسم الدولة باللغة الإنجليزية',
+        'create_country' => 'إنشاء دولة',
+        'create_new_country' => 'إنشاء دولة جديدة',
+        'edit_country' => 'تعديل الدولة',
+        'show_country' => 'عرض دولة',
+        'country_code' => 'رمز الدولة',
+        'phone_code' => 'رمز الهاتف',
+        'delete_country_msg' => 'سيتم حذف المحافظات والمدن التي تنتمي إليها!!',
+
+
+        'governorates' => 'المحافظات',
+        'governorate_name' => 'اسم المحافظة',
+        'governorate_name_ar' => 'اسم المحافظة باللغة العربية',
+        'governorate_name_en' => 'اسم المحافظة باللغة الإنجليزية',
+        'create_governorate' => 'إنشاء محافظة',
+        'create_new_governorate' => 'إنشاء محافظة جديدة',
+        'edit_governorate' => 'تعديل المحافظة',
+        'show_governorate' => 'عرض محافظة',
+        'delete_governorate_msg' => 'سيتم حذف المدن التي تنتمي إليها!!',
+        'governorates_of' => 'محافظات دولة',
+
+
+        'cities' => 'المدن',
+        'city_name' => 'اسم المدينة',
+        'city_name_ar' => 'اسم المدينة باللغة العربية',
+        'city_name_en' => 'اسم المدينة باللغة الإنجليزية',
+        'create_city' => 'إنشاء مدينة',
+        'create_new_city' => 'إنشاء مدينة جديدة',
+        'edit_city' => 'تعديل المدينة',
+        'show_city' => 'عرض مدينة',
+        'cities_of' => 'مدن محافظة',
+    ],
+
+
 ];

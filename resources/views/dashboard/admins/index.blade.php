@@ -41,6 +41,11 @@
                                         <th>{{ __('static.actions.title') }}</th>
                                     </tr>
                                 </thead>
+                                <style>
+                                    th {
+                                        text-align: center
+                                    }
+                                </style>
                                 <tbody>
                                     @forelse ($admins as $admin)
                                         @php
@@ -59,21 +64,21 @@
                                             $randomColor = $colors[array_rand($colors)];
                                         @endphp
                                         <tr class="{{ $randomColor }} bg-lighten-4">
-                                            <td style="text-align: center">{{ $loop->iteration }}</td>
-                                            <td style="text-align: center">{{ $admin->name }}</td>
-                                            <td style="text-align: center">{{ $admin->authorization->role }}
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $admin->name }}</td>
+                                            <td>{{ $admin->authorization->role }}
                                             </td>
-                                            <td style="text-align: center">
+                                            <td>
                                                 <p style="align-items: center; border-radius: 6px; text-align: center; text-align: center"
                                                     class="@if ($admin->status == 'active') btn-success  @else btn-danger @endif">
                                                     {{ $admin->status == 'active' ? __('static.status.active') : __('static.status.inactive') }}
                                                 </p>
                                             </td>
-                                            <td style="text-align: center">{{ $admin->email }}</td>
-                                            <td style="text-align: center">
+                                            <td>{{ $admin->email }}</td>
+                                            <td>
                                                 {{ $admin->created_at->format('Y-m-d h:m a') }}</td>
 
-                                            <td style="text-align: center">
+                                            <td>
                                                 <div class="dropdown float-md-lift">
                                                     <button class="btn btn-danger dropdown-toggle round btn-glow px-2"
                                                         id="dropdownBreadcrumbButton" type="button" data-toggle="dropdown"
@@ -85,8 +90,9 @@
                                                             <i class="la la-edit"></i>{{ __('static.actions.edit') }}</a>
                                                         <a href="javascript:void(0)" style="padding: 3px"
                                                             class="dropdown-item"
-                                                            onclick="confirmDelete(event, 'delete_admin_{{ $admin->id }}', this.dataset.message)"
-                                                            data-message='{{ __('messages.delete_confirmation') }}'><i
+                                                            onclick="confirmDelete(event, 'delete_admin_{{ $admin->id }}', this.dataset.message, this.dataset.title)"
+                                                            data-message='{{ __('messages.delete_confirmation') }}'
+                                                            data-title='{{ __('static.global.sure') }}'><i
                                                                 class="la la-trash"></i>{{ __('static.actions.delete') }}</a>
 
                                                         <form style="display: none" id="delete_admin_{{ $admin->id }}"
@@ -108,6 +114,11 @@
                                                 </div>
                                             </td>
                                         </tr>
+                                        <style>
+                                            td {
+                                                text-align: center
+                                            }
+                                        </style>
                                     @empty
                                         <tr>
                                             <td class="alert alert-info" colspan="7"> No Admins</td>

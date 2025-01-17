@@ -40,6 +40,11 @@
                                         <th>{{ __('static.actions.title') }}</th>
                                     </tr>
                                 </thead>
+                                <style>
+                                    th {
+                                        text-align: center
+                                    }
+                                </style>
                                 <tbody>
                                     @forelse ($authorizations as $authorization)
                                         @php
@@ -57,7 +62,7 @@
 
                                             $randomColor = $colors[array_rand($colors)];
                                         @endphp
-                                        <tr class="{{ $randomColor }} bg-lighten-4">
+                                        <tr id="role_{{ $authorization->id }}" class="{{ $randomColor }} bg-lighten-4">
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $authorization->role }}</td>
                                             <td>
@@ -92,17 +97,12 @@
                                                             <i class="la la-edit"></i>{{ __('static.actions.edit') }}</a>
                                                         <a href="javascript:void(0)" style="padding: 3px"
                                                             class="dropdown-item"
-                                                            onclick="confirmDelete(event, 'delete_role_{{ $authorization->id }}', this.dataset.message)"
-                                                            data-message='{{ __('messages.delete_confirmation') }}'><i
+                                                            data-url="{{ route('dashboard.roles.destroy', $authorization->id) }}"
+                                                            data-message="{{ __('messages.delete_confirmation') }}"
+                                                            data-title="{{ __('static.global.sure') }}"
+                                                            data-item_id="role_{{ $authorization->id }}"
+                                                            onclick="confirmDelete(event, this.dataset.url,this.dataset.item_id, this.dataset.message, this.dataset.title)"><i
                                                                 class="la la-trash"></i>{{ __('static.actions.delete') }}</a>
-
-                                                        <form style="display: none"
-                                                            id="delete_role_{{ $authorization->id }}"
-                                                            action="{{ route('dashboard.roles.destroy', $authorization->id) }}"
-                                                            method="POST">
-                                                            @csrf
-                                                            @method('delete')
-                                                        </form>
 
                                                         <a style="padding: 3px" class="dropdown-item" href="#"><i
                                                                 class="la la-play"></i>
@@ -114,6 +114,11 @@
                                                 </div>
                                             </td>
                                         </tr>
+                                        <style>
+                                            td {
+                                                text-align: center
+                                            }
+                                        </style>
                                     @empty
                                         <tr>
                                             <td class="alert alert-info" colspan="6"> No authorizations</td>

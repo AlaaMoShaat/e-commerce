@@ -25,6 +25,7 @@
     </div>
     @include('layouts.dashboard._footer')
     @include('layouts.dashboard._scripts')
+    @stack('js')
 </body>
 
 </html>

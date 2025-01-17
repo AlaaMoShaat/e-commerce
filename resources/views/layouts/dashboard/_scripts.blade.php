@@ -20,3 +20,7 @@
  <!-- END PAGE LEVEL JS-->
 
  <script src="{{ asset('assets/js/scripts.js') }}"></script>
+ <script src="{{ asset('assets/dashboard') }}/vendors/js/forms/select/selectivity-full.min.js" type="text/javascript">
+ </script>
+ <script src="{{ asset('assets/dashboard') }}/js/scripts/forms/select/form-selectivity.js" type="text/javascript">
+ </script>

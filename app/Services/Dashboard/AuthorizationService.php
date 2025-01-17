@@ -41,10 +41,10 @@ class AuthorizationService
 
     public function deleteRole($id)
     {
-        $role = $this->authorizationRepository->getRole($id);
+        $role = self::getRole($id);
         if (!$role || $role->admins->count() > 0) {
             return false;
         }
-        return $this->authorizationRepository->deleteRole($id);
+        return $this->authorizationRepository->deleteRole($role);
     }
 }

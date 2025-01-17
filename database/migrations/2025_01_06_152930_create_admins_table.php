@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('password');
             $table->boolean('status')->default(true);
             $table->string('phone')->unique();
-            $table->foreignId('role_id')->constrained('roles')->cascadeOnDelete();
+            $table->foreignId('role_id')->constrained('authorizations')->cascadeOnDelete();
             $table->rememberToken();
             $table->timestamps();
         });

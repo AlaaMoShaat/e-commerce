@@ -199,6 +199,7 @@ return [
         'role_id'                  => 'Role',
         'name.en' => 'Name in English',
         'name.ar' => 'Name in Arabic',
+        'price'   => 'Price',
     ],
 
 ];

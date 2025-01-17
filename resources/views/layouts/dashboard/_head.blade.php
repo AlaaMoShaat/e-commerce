@@ -6,6 +6,8 @@
 <meta name="keywords"
     content="admin template, modern admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
 <meta name="author" content="PIXINVENT">
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 <title> {{ __('static.global.site_name') }} | {{ __('static.global.dashboard') }} | @yield('title')</title>
 <link rel="apple-touch-icon" href="{{ asset('assets/dashboard') }}/images/ico/apple-icon-120.png">
 <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/dashboard') }}/images/ico/favicon.ico">
@@ -27,7 +29,8 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard') }}/vendors/css/forms/icheck/icheck.css">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard') }}/vendors/css/forms/icheck/custom.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+<link rel="stylesheet" type="text/css"
+    href="{{ asset('assets/dashboard') }}/vendors/css/forms/selects/selectivity-full.min.css" />
 @if (config('app.locale') == 'ar')
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard') }}/css-rtl/vendors.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard') }}/css-rtl/app.css">

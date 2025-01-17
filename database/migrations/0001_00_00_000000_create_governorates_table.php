@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('governotates', function (Blueprint $table) {
+        Schema::create('governorates', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
+            $table->boolean('status')->default(false);
             $table->foreignId('country_id')->constrained('countries')->cascadeOnDelete();
         });
     }
@@ -23,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('governotates');
+        Schema::dropIfExists('governorates');
     }
 };

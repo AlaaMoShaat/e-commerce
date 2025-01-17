@@ -84,9 +84,9 @@ class AuthorizationController extends Controller
     {
         $role = $this->authorizationService->deleteRole($id);
         if (!$role) {
-            return redirect()->back()->with('error', __('messages.delete_rlated_admins'));
+            return response()->json(['status' => false, 'message' => __('messages.delete_rlated_admins')]);
         }
 
-        return redirect()->back()->with('success', __('messages.success_msg'));
+        return response()->json(['status' => 'success', 'message' => __('messages.success_msg')], 200);
     }
 }

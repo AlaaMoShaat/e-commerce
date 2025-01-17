@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class ShippingGovernorate extends Model
 {
-    //
+    protected $fillable = ['price', 'governorate_id'];
 }

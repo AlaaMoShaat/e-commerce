@@ -91,7 +91,7 @@ class AdminController extends Controller
     {
         $admin = $this->adminService->deleteAdmin($id);
         if (!$admin) {
-            return redirect()->back()->with('error', __('messages.delete_rlated_admins'));
+            return redirect()->back()->with('error', __('messages.failed_msg'));
         }
 
         return redirect()->back()->with('success', __('messages.success_msg'));
