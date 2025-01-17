@@ -92,6 +92,44 @@
                 </li>
             @endcan
 
+            <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title"
+                        data-i18n="nav.templates.main">{{ __('static.categories.title') }}</span></a>
+                <ul class="menu-content">
+                    @can('categories')
+                        <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title"
+                                    data-i18n="nav.templates.main">{{ __('static.categories.title') }}</span></a>
+                            <ul class="menu-content">
+                                <li class="{{ isActiveRoute('dashboard.categories.index') }}"><a class="menu-item"
+                                        href="{{ route('dashboard.categories.index') }}"
+                                        data-i18n="nav.templates.vert.main">{{ __('static.categories.title') }}</a>
+                                </li>
+                                <li class="{{ isActiveRoute('dashboard.categories.create') }}"><a class="menu-item"
+                                        href="{{ route('dashboard.categories.create') }}"
+                                        data-i18n="nav.templates.vert.main">{{ __('static.categories.create_category') }}</a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endcan
+
+                    @can('brands')
+                        <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title"
+                                    data-i18n="nav.templates.main">{{ __('static.brands.title') }}</span></a>
+                            <ul class="menu-content">
+
+                                <li class="{{ isActiveRoute('dashboard.brands.index') }}"><a class="menu-item"
+                                        href="{{ route('dashboard.brands.index') }}"
+                                        data-i18n="nav.templates.vert.main">{{ __('static.brands.title') }}</a>
+                                </li>
+                                <li class="{{ isActiveRoute('dashboard.brands.create') }}"><a class="menu-item"
+                                        href="{{ route('dashboard.brands.create') }}"
+                                        data-i18n="nav.templates.vert.main">{{ __('static.brands.create_brand') }}</a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endcan
+                </ul>
+            </li>
+
 
             <li class=" navigation-header">
                 <span data-i18n="nav.category.layouts">Layouts</span><i class="la la-ellipsis-h ft-minus"
@@ -974,7 +1012,8 @@
                     <li><a class="menu-item" href="form-switch.html"
                             data-i18n="nav.form_elements.form_switch">Switch</a>
                     </li>
-                    <li><a class="menu-item" href="#" data-i18n="nav.form_elements.form_select.main">Select</a>
+                    <li><a class="menu-item" href="#"
+                            data-i18n="nav.form_elements.form_select.main">Select</a>
                         <ul class="menu-content">
                             <li><a class="menu-item" href="form-select2.html"
                                     data-i18n="nav.form_elements.form_select.form_select2">Select2</a>

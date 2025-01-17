@@ -3,6 +3,7 @@
 
 <head>
     @include('layouts.dashboard._head')
+    @stack('css')
 </head>
 
 <body class="vertical-layout vertical-menu-modern 2-columns   menu-expanded fixed-navbar" data-open="click"

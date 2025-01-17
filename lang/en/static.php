@@ -106,4 +106,23 @@ return [
         // 'delete_city_msg' => 'It will delete the governorates and cities to which they belong!!',
 
     ],
+    'categories' => [
+        'title' => 'Categories',
+        'create_category' => 'Create Category',
+        'edit_category' => 'Edit Category',
+        'category_name' => 'Category Name',
+        'category_name_ar' => 'Category Name in Arabic',
+        'category_name_en' => 'Category Name in English',
+        'create_new_category' => 'Create New Category',
+    ],
+
+    'brands' => [
+        'title' => 'Categories',
+        'create_brand' => 'Create Brand',
+        'edit_brand' => 'Edit Brand',
+        'brand_name' => 'Brand Name',
+        'brand_name_ar' => 'Brand Name in Arabic',
+        'brand_name_en' => 'Brand Name in English',
+        'create_new_brand' => 'Create New Brand',
+    ],
 ];

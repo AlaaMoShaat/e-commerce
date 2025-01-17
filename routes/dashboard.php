@@ -1,17 +1,19 @@
 <?php
 
-use App\Http\Controllers\Dashboard\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\HomeController;
+use App\Http\Controllers\Dashboard\AdminController;
+use App\Http\Controllers\Dashboard\WorldController;
+use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\Auth\AuthController;
+use App\Http\Controllers\Dashboard\Region\CityController;
+use App\Http\Controllers\Dashboard\AuthorizationController;
+use App\Http\Controllers\Dashboard\Region\CountryController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Dashboard\Auth\ResetPasswordController;
-use App\Http\Controllers\Dashboard\Auth\ForgotPasswordController;
-use App\Http\Controllers\Dashboard\AuthorizationController;
-use App\Http\Controllers\Dashboard\Region\CityController;
-use App\Http\Controllers\Dashboard\Region\CountryController;
 use App\Http\Controllers\Dashboard\Region\GovernorateController;
-use App\Http\Controllers\Dashboard\WorldController;
+use App\Http\Controllers\Dashboard\Auth\ForgotPasswordController;
+use App\Http\Controllers\Dashboard\BrandController;
 
 Route::group(
     [
@@ -86,6 +88,20 @@ Route::group(
                 });
             });
             ################################ End Shipping & Region Routes #################################
+
+            ################################ Category Routes #################################
+            Route::group(['middleware'=>'can:categories'], function() {
+                Route::resource('categories', CategoryController::class);
+                Route::get('categories/{id}/status', [CategoryController::class, 'changeStatus'])->name('categories.changeStatus');
+            });
+            ################################ End Category Routes #################################
+
+             ################################ Brand Routes #################################
+             Route::group(['middleware'=>'can:brands'], function() {
+                Route::resource('brands', BrandController::class);
+                Route::get('brands/{id}/status', [BrandController::class, 'changeStatus'])->name('brands.changeStatus');
+            });
+            ################################ End Brand Routes #################################
 
         });
 

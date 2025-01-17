@@ -31,6 +31,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <link rel="stylesheet" type="text/css"
     href="{{ asset('assets/dashboard') }}/vendors/css/forms/selects/selectivity-full.min.css" />
+
 @if (config('app.locale') == 'ar')
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard') }}/css-rtl/vendors.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard') }}/css-rtl/app.css">

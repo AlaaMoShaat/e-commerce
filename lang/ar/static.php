@@ -106,5 +106,24 @@ return [
         'cities_of' => 'مدن محافظة',
     ],
 
+    'categories' => [
+        'title' => 'الفئات',
+        'create_category' => 'إنشاء فئة',
+        'edit_category' => 'تعديل الفئة',
+        'category_name' => 'اسم الفئة',
+        'category_name_ar' => 'اسم الفئة بالعربية',
+        'category_name_en' => 'اسم الفئة بالإنجليزية',
+        'create_new_category' => 'إنشاء فئة جديدة',
+    ],
+
+    'brands' => [
+        'title' => 'العلامات التجارية',
+        'create_brand' => 'إنشاء علامة تجارية',
+        'edit_brand' => 'تعديل العلامة التجارية',
+        'brand_name' => 'اسم العلامة التجارية',
+        'brand_name_ar' => 'اسم العلامة التجارية بالعربية',
+        'brand_name_en' => 'اسم العلامة التجارية بالإنجليزية',
+        'create_new_brand' => 'إنشاء علامة تجارية جديدة',
+    ],
 
 ];
