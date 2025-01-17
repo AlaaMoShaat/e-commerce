@@ -17,7 +17,7 @@ class GovernorateRepository
 
     public function getGovernorates()
     {
-        $governorates = Governorate::when(!empty(request()->keyword), function($query) {
+        $governorates = Governorate::withCount(['cities', 'users', 'shippingGovernorate'])->when(!empty(request()->keyword), function($query) {
             $query->where('name', 'LIKE', '%' . request()->keyword . '%');
         })->paginate(6);
         return $governorates;
@@ -25,7 +25,7 @@ class GovernorateRepository
 
     public function getGovernorate($id)
     {
-        return Governorate::with('cities')->find($id);
+        return Governorate::with(['cities', 'users'])->find($id);
     }
     public function deleteGovernorate($governorate)
     {

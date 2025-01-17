@@ -101,7 +101,7 @@
                                                 <a style="padding: 3px" class="dropdown-item"
                                                     href="{{ route('dashboard.governorates.show', $governorate->id) }}">
                                                     <div class="badge badge-pill badge-border border-success success">
-                                                        {{ $governorate->cities->count() }}
+                                                        {{ $governorate->cities_count }}
                                                     </div>
                                                 </a>
                                             </td>
@@ -109,7 +109,7 @@
                                             <td>
                                                 <a style="padding: 3px" class="dropdown-item" href="">
                                                     <div class="badge badge-pill badge-border border-info info">
-                                                        {{ $governorate->users->count() }}
+                                                        {{ $governorate->users_count }}
                                                     </div>
                                                 </a>
                                             </td>

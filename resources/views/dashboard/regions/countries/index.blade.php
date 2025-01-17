@@ -96,14 +96,14 @@
                                                 <a style="padding: 3px" class="dropdown-item"
                                                     href="{{ route('dashboard.countries.show', $country->id) }}">
                                                     <div class="badge badge-pill badge-border border-success success">
-                                                        {{ $country->governorates->count() }}
+                                                        {{ $country->governorates_count }}
                                                     </div>
                                                 </a>
                                             </td>
                                             <td>
                                                 <a style="padding: 3px" class="dropdown-item" href="">
                                                     <div class="badge badge-pill badge-border border-info info">
-                                                        {{ $country->users->count() }}
+                                                        {{ $country->users_count }}
                                                     </div>
                                                 </a>
                                             </td>
