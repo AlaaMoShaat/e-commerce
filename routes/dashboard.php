@@ -91,7 +91,8 @@ Route::group(
 
             ################################ Category Routes #################################
             Route::group(['middleware'=>'can:categories'], function() {
-                Route::resource('categories', CategoryController::class);
+                Route::resource('categories', CategoryController::class)->except('show');
+                Route::get('categories-all', [CategoryController::class, 'getAllCategories'])->name('categories.all');
                 Route::get('categories/{id}/status', [CategoryController::class, 'changeStatus'])->name('categories.changeStatus');
             });
             ################################ End Category Routes #################################

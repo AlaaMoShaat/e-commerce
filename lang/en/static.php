@@ -24,6 +24,7 @@ return [
         'price'   => 'Price',
         'sipping_price' => 'Sipping Price',
         'change_price' => 'Change Sipping Price',
+        'details_for' => 'Details for',
     ],
     'errors' => [
         '403' => 'Sorry! You do not have permission to access this page.',
@@ -114,6 +115,7 @@ return [
         'category_name_ar' => 'Category Name in Arabic',
         'category_name_en' => 'Category Name in English',
         'create_new_category' => 'Create New Category',
+        'parent_category' => 'Parent Category',
     ],
 
     'brands' => [

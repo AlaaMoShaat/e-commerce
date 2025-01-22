@@ -64,24 +64,10 @@
         });
     };
 
-    window.changeStatus = function (
-        event,
-        id,
-        url,
-        statusActive,
-        statusInactive
-    ) {
+    window.changeStatus = function (event, id, url, lang) {
         event.preventDefault();
-
-        // تأكد من وجود المتغيرات المترجمة
-        var statusActiveText = statusActive;
-        var statusInactiveText = statusInactive;
-
-        // تحقق من وجود القيم المترجمة
-        if (!statusActiveText || !statusInactiveText) {
-            console.error("Translation for status is missing.");
-            return;
-        }
+        console.log(url);
+        var statusText = "";
 
         $.ajax({
             url: url,
@@ -91,22 +77,18 @@
                     const statusButton = document.getElementById(
                         "status_" + id
                     );
-                    const newStatus =
-                        response.data.status === "active"
-                            ? "active"
-                            : "inactive";
-
-                    // تحديث النص باستخدام القيم المترجمة
-                    if (newStatus === "active") {
-                        statusButton.innerHTML = statusActiveText; // النص المترجم
+                    const newStatus = response.data.status;
+                    if (lang == "ar") {
+                        statusText = newStatus == 1 ? "مفعل" : "غير مفعل";
                     } else {
-                        statusButton.innerHTML = statusInactiveText; // النص المترجم
+                        statusText = newStatus == 1 ? "Active" : "Inactive";
                     }
+                    statusButton.innerHTML = statusText;
 
                     // تحديث الكلاسات
                     statusButton.classList.remove("btn-danger", "btn-success");
                     statusButton.classList.add(
-                        newStatus === "active" ? "btn-success" : "btn-danger"
+                        newStatus == 1 ? "btn-success" : "btn-danger"
                     );
 
                     $(".toster_success").text(response.message).show();

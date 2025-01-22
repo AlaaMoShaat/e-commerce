@@ -28,6 +28,8 @@
                 </div>
                 <div class="card-content collapse show">
                     <div class="card-body">
+                        @include('dashboard.includes.toster-error')
+                        @include('dashboard.includes.toster-success')
                         <div style="min-height: 200px" class="table-responsive">
                             <table class="table mb-0">
                                 <thead>

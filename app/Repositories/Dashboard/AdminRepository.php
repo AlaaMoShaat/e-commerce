@@ -59,7 +59,7 @@ class AdminRepository
     public function changeStatus($admin)
     {
         $admin = $admin->update([
-            'status' => $admin->status == 'active' ? 0 : 1,
+            'status' => $admin->status == '1' ? 0 : 1,
         ]);
         return $admin;
     }

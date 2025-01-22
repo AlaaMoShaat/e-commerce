@@ -24,3 +24,31 @@
  </script>
  <script src="{{ asset('assets/dashboard') }}/js/scripts/forms/select/form-selectivity.js" type="text/javascript">
  </script>
+
+ {{-- DataTables --}}
+ <script src="https://cdn.datatables.net/2.2.1/js/dataTables.min.js" type="text/javascript"></script>
+ <script src="https://cdn.datatables.net/2.2.1/js/dataTables.bootstrap5.min.js" type="text/javascript"></script>
+ <script src="https://cdn.datatables.net/buttons/3.2.0/js/dataTables.buttons.min.js" type="text/javascript"></script>
+ <script src="https://cdn.datatables.net/buttons/3.2.0/js/buttons.bootstrap5.min.js" type="text/javascript"></script>
+ <script src="https://cdn.datatables.net/buttons/3.2.0/js/buttons.colVis.min.js" type="text/javascript"></script>
+ <script src="https://cdn.datatables.net/buttons/3.2.0/js/buttons.html5.min.js" type="text/javascript"></script>
+ <script src="https://cdn.datatables.net/buttons/3.2.0/js/buttons.print.min.js" type="text/javascript"></script>
+ <script src="{{ asset('vendor/datatables/excel/jszip.min.js') }}" type="text/javascript"></script>
+ <script src="{{ asset('vendor/datatables/pdf/pdfmake.min.js') }}" type="text/javascript"></script>
+ <script src="{{ asset('vendor/datatables/pdf/vfs_fonts.js') }}" type="text/javascript"></script>
+ <script src="https://cdn.datatables.net/responsive/3.0.3/js/dataTables.responsive.min.js" type="text/javascript">
+ </script>
+ <script src="https://cdn.datatables.net/responsive/3.0.3/js/responsive.bootstrap5.min.js" type="text/javascript">
+ </script>
+ <script src="https://cdn.datatables.net/colreorder/2.0.4/js/dataTables.colReorder.min.js" type="text/javascript">
+ </script>
+ <script src="https://cdn.datatables.net/colreorder/2.0.4/js/colReorder.bootstrap5.min.js" type="text/javascript">
+ </script>
+ <script src="https://cdn.datatables.net/select/3.0.0/js/dataTables.select.min.js" type="text/javascript"></script>
+ <script src="https://cdn.datatables.net/select/3.0.0/js/select.bootstrap5.min.js" type="text/javascript"></script>
+ <script src="https://cdn.datatables.net/fixedheader/4.0.1/js/dataTables.fixedHeader.min.js" type="text/javascript">
+ </script>
+ <script src="https://cdn.datatables.net/fixedheader/4.0.1/js/fixedHeader.bootstrap5.min.js" type="text/javascript">
+ </script>
+ <script src="https://cdn.datatables.net/scroller/2.4.3/js/dataTables.scroller.min.js" type="text/javascript"></script>
+ <script src="https://cdn.datatables.net/scroller/2.4.3/js/scroller.bootstrap5.min.js" type="text/javascript"></script>

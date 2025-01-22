@@ -31,8 +31,12 @@ class Governorate extends Model
         return $this->hasMany(User::class, 'governorate_id');
     }
 
-    public function getStatusAttribute($value)
+    public function getStatusTranslatable()
     {
-        return $value == 1 ? 'active' : 'inactive';
+        if( app()->getLocale() == 'ar') {
+            return $this->status == 1? 'مفعل' : 'غير مفعل';
+        }else {
+            return $this->status == 1? 'Active' : 'Inactive';
+        }
     }
 }

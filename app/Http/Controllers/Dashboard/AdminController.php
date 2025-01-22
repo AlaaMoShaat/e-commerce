@@ -91,18 +91,18 @@ class AdminController extends Controller
     {
         $admin = $this->adminService->deleteAdmin($id);
         if (!$admin) {
-            return redirect()->back()->with('error', __('messages.failed_msg'));
+            return response()->json(['status' => 'failed', 'message' => __('messages.failed_msg')], 404);
         }
-
-        return redirect()->back()->with('success', __('messages.success_msg'));
+        return response()->json(['status' => 'success', 'message' => __('messages.success_msg')], 200);
     }
 
     public function changeStatus($id)
     {
         $admin = $this->adminService->changeStatus($id);
         if (!$admin) {
-            return redirect()->back()->with('error', __('messages.failed_msg'));
+            return response()->json(['status' => 'failed', 'message' => __('messages.failed_msg')], 404);
         }
-        return redirect()->back()->with('success', __('messages.success_msg'));
+        $admin = $this->adminService->getAdmin($id);
+        return response()->json(['status' => 'success', 'message' => __('messages.success_msg'), 'data' => $admin], 200);
     }
 }

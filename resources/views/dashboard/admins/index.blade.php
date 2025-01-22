@@ -28,6 +28,8 @@
                 </div>
                 <div class="card-content collapse show">
                     <div class="card-body">
+                        @include('dashboard.includes.toster-error')
+                        @include('dashboard.includes.toster-success')
                         <div style="min-height: 200px" class="table-responsive">
                             <table class="table mb-0">
                                 <thead>
@@ -63,15 +65,16 @@
 
                                             $randomColor = $colors[array_rand($colors)];
                                         @endphp
-                                        <tr class="{{ $randomColor }} bg-lighten-4">
+                                        <tr id="admin_{{ $admin->id }}" class="{{ $randomColor }} bg-lighten-4">
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $admin->name }}</td>
                                             <td>{{ $admin->authorization->role }}
                                             </td>
                                             <td>
-                                                <p style="align-items: center; border-radius: 6px; text-align: center; text-align: center"
-                                                    class="@if ($admin->status == 'active') btn-success  @else btn-danger @endif">
-                                                    {{ $admin->status == 'active' ? __('static.status.active') : __('static.status.inactive') }}
+                                                <p id="status_{{ $admin->id }}"
+                                                    style="align-items: center; border-radius: 6px; text-align: center; text-align: center"
+                                                    class="@if ($admin->status == '1') btn-success  @else btn-danger @endif">
+                                                    {{ $admin->getStatusTranslatable() }}
                                                 </p>
                                             </td>
                                             <td>{{ $admin->email }}</td>
@@ -88,24 +91,28 @@
                                                             style="padding: 3px" class="dropdown-item"
                                                             href="{{ route('dashboard.admins.edit', $admin->id) }}">
                                                             <i class="la la-edit"></i>{{ __('static.actions.edit') }}</a>
+
                                                         <a href="javascript:void(0)" style="padding: 3px"
                                                             class="dropdown-item"
-                                                            onclick="confirmDelete(event, 'delete_admin_{{ $admin->id }}', this.dataset.message, this.dataset.title)"
-                                                            data-message='{{ __('messages.delete_confirmation') }}'
-                                                            data-title='{{ __('static.global.sure') }}'><i
-                                                                class="la la-trash"></i>{{ __('static.actions.delete') }}</a>
+                                                            data-url="{{ route('dashboard.admins.destroy', $admin->id) }}"
+                                                            data-message="{{ __('messages.delete_confirmation') }}"
+                                                            data-title="{{ __('static.global.sure') }}"
+                                                            data-item_id="admin_{{ $admin->id }}"
+                                                            onclick="confirmDelete(event, this.dataset.url,this.dataset.item_id, this.dataset.message, this.dataset.title)">
+                                                            <i class="la la-trash"></i>{{ __('static.actions.delete') }}
+                                                        </a>
 
-                                                        <form style="display: none" id="delete_admin_{{ $admin->id }}"
-                                                            action="{{ route('dashboard.admins.destroy', $admin->id) }}"
-                                                            method="POST">
-                                                            @csrf
-                                                            @method('delete')
-                                                        </form>
 
-                                                        <a style="padding: 3px" class="dropdown-item"
-                                                            href="{{ route('dashboard.admins.changeStatus', $admin->id) }}"><i
-                                                                class="la @if ($admin->status == 'active') la-stop @else la-play @endif"></i>
-                                                            {{ __('static.actions.change_status') }}</a>
+                                                        <a style="padding: 3px" class="dropdown-item change_status"
+                                                            data-id="{{ $admin->id }}"
+                                                            data-url = "{{ route('dashboard.admins.changeStatus', $admin->id) }}"
+                                                            data-lang="{{ app()->getLocale() }}"
+                                                            onclick="changeStatus(event,this.dataset.id, this.dataset.url,this.dataset.lang)"
+                                                            href="javascript:void(0)">
+                                                            <i
+                                                                class="la @if ($admin->status == '1') la-stop @else la-play @endif"></i>
+                                                            {{ __('static.actions.change_status') }}
+                                                        </a>
 
                                                         <div class="dropdown-divider"></div><a style="padding: 3px"
                                                             class="dropdown-item" href="#"><i class="la la-cog"></i>

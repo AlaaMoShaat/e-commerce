@@ -45,7 +45,7 @@ class CountryRepository
     public function changeStatus($country)
     {
         $country = $country->update([
-            'status' => $country->status == 'active' ? '0' : '1',
+            'status' => $country->status == '1' ? '0' : '1',
         ]);
         return $country;
     }

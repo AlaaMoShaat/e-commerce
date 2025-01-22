@@ -114,7 +114,7 @@
                                                 <p style="align-items: center; border-radius: 6px; text-align: center; text-align: center"
                                                     id="status_{{ $country->id }}"
                                                     class="@if (($country->status == 'active') == 'active') btn-success  @else btn-danger @endif">
-                                                    {{ $country->status == 'active' ? __('static.status.active') : __('static.status.inactive') }}
+                                                    {{ $country->getStatusTranslatable() }}
                                                 </p>
                                             </td>
 
@@ -141,15 +141,11 @@
                                                         <a style="padding: 3px" class="dropdown-item change_status"
                                                             data-id="{{ $country->id }}"
                                                             data-url = "{{ route('dashboard.countries.changeStatus', $country->id) }}"
-                                                            data-status_active="{{ __('static.status.active') }}"
-                                                            data-status_inactive="{{ __('static.status.inactive') }}"
-                                                            onclick="changeStatus(event,
-                                                                                    this.dataset.id, this.dataset.url,
-                                                                                    this.dataset.status_active,
-                                                                                    this.dataset.status_inactive)"
+                                                            data-lang="{{ app()->getLocale() }}"
+                                                            onclick="changeStatus(event,this.dataset.id, this.dataset.url,this.dataset.lang)"
                                                             href="javascript:void(0)">
                                                             <i
-                                                                class="la @if ($country->status == 'active') la-stop @else la-play @endif"></i>
+                                                                class="la @if ($country->status == '1') la-stop @else la-play @endif"></i>
                                                             {{ __('static.actions.change_status') }}
                                                         </a>
 

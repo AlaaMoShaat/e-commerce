@@ -104,8 +104,8 @@
                                             <td>
                                                 <p id="status_{{ $city->id }}"
                                                     style="align-items: center; border-radius: 6px; text-align: center; text-align: center"
-                                                    class="@if ($city->status == 'active') btn-success  @else btn-danger @endif">
-                                                    {{ $city->status == 'active' ? __('static.status.active') : __('static.status.inactive') }}
+                                                    class="@if ($city->status == '1') btn-success  @else btn-danger @endif">
+                                                    {{ $city->getStatusTranslatable() }}
                                                 </p>
                                             </td>
                                             <td>
@@ -139,15 +139,11 @@
                                                         <a style="padding: 3px" class="dropdown-item change_status"
                                                             data-id="{{ $city->id }}"
                                                             data-url = "{{ route('dashboard.cities.changeStatus', $city->id) }}"
-                                                            data-status_active="{{ __('static.status.active') }}"
-                                                            data-status_inactive="{{ __('static.status.inactive') }}"
-                                                            onclick="changeStatus(event,
-                                                                                    this.dataset.id, this.dataset.url,
-                                                                                    this.dataset.status_active,
-                                                                                    this.dataset.status_inactive)"
+                                                            data-lang="{{ app()->getLocale() }}"
+                                                            onclick="changeStatus(event,this.dataset.id, this.dataset.url,this.dataset.lang)"
                                                             href="javascript:void(0)">
                                                             <i
-                                                                class="la @if ($city->status == 'active') la-stop @else la-play @endif"></i>
+                                                                class="la @if ($city->status == '1') la-stop @else la-play @endif"></i>
                                                             {{ __('static.actions.change_status') }}
                                                         </a>
 

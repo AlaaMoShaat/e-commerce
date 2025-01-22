@@ -34,7 +34,7 @@ class GovernorateRepository
     public function changeStatus($governorate)
     {
         $governorate = $governorate->update([
-            'status' => $governorate->status == 'active' ? '0' : '1',
+            'status' => $governorate->status == '1' ? '0' : '1',
         ]);
         return $governorate;
     }

@@ -24,6 +24,7 @@ return [
         'price'   => 'السعر',
         'sipping_price' => 'سعر الشحن',
         'change_price' => 'تغيير سعر الشحن',
+        'details_for' => 'تفاصيل عن',
     ],
     'errors' => [
         '403' => 'عذرًا! ليس لديك صلاحية للوصول إلى هذه الصفحة.',
@@ -44,8 +45,8 @@ return [
     ],
     'status' => [
         'title' => 'الحالة',
-        'active' => 'نشط',
-        'inactive' => 'غير نشط'
+        'active' => 'مفعل',
+        'inactive' => 'غير مفعل'
     ],
     'authorization' => [
         'create_role' => 'إنشاء دور',
@@ -114,6 +115,7 @@ return [
         'category_name_ar' => 'اسم الفئة بالعربية',
         'category_name_en' => 'اسم الفئة بالإنجليزية',
         'create_new_category' => 'إنشاء فئة جديدة',
+        'parent_category' => 'الفئة الاب',
     ],
 
     'brands' => [

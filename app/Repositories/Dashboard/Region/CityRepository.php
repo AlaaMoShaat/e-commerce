@@ -39,7 +39,7 @@ class CityRepository
     public function changeStatus($city)
     {
         $city = $city->update([
-            'status' => $city->status == 'active' ? '0' : '1',
+            'status' => $city->status == '1' ? '0' : '1',
         ]);
         return $city;
     }
