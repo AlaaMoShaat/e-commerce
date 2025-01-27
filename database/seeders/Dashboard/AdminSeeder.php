@@ -4,8 +4,9 @@ namespace Database\Seeders\Dashboard;
 
 use App\Models\Admin;
 use App\Models\Authorization;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class AdminSeeder extends Seeder
 {
@@ -14,17 +15,24 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        Admin::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         $first_role_id = Authorization::first()->id;
         Admin::create([
             'name' => 'Admin',
             'email' => 'admin@admin.com',
             'password' => bcrypt('password'),
+            'phone' => '+201021965455',
+            'status' => '1',
             'role_id' => $first_role_id,
         ]);
         Admin::create([
             'name' => 'Alaa',
             'email' => 'alaa@admin.com',
             'password' => bcrypt('password'),
+            'phone' => '+201021965456',
+            'status' => '1',
             'role_id' => $first_role_id,
         ]);
     }

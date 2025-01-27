@@ -23,6 +23,132 @@
                     </ul>
                 </li>
             @endcan
+
+            <style>
+                .main-badge {
+                    margin-left: 20px
+                }
+            </style>
+            @can('admins')
+                <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title"
+                            data-i18n="nav.templates.main">{{ __('static.admins.title') }}</span>
+                        <span class="main-badge badge badge-pill badge-warning">{{ $admins_count }}</span>
+                    </a>
+                    <ul class="menu-content">
+
+                        <li class="{{ isActiveRoute('dashboard.admins.index') }}"><a class="menu-item"
+                                href="{{ route('dashboard.admins.index') }}"
+                                data-i18n="nav.templates.vert.main">{{ __('static.admins.title') }}</a>
+                        </li>
+                        <li class="{{ isActiveRoute('dashboard.admins.create') }}"><a class="menu-item"
+                                href="{{ route('dashboard.admins.create') }}"
+                                data-i18n="nav.templates.vert.main">{{ __('static.admins.create_admin') }}</a>
+                        </li>
+                    </ul>
+                </li>
+            @endcan
+
+
+            @can('region')
+                <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title"
+                            data-i18n="nav.templates.main">{{ __('static.regions.title') }}</span></a>
+                    <ul class="menu-content">
+                        <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title"
+                                    data-i18n="nav.templates.main">
+                                    {{ __('static.regions.countries') }}</span>
+                                <span class="badge badge badge-pill badge-warning">{{ $countries_count }}</span>
+                            </a>
+                            <ul class="menu-content">
+                                <li class="{{ isActiveRoute('dashboard.countries.index') }}"><a class="menu-item"
+                                        href="{{ route('dashboard.countries.index') }}"
+                                        data-i18n="nav.templates.vert.main">{{ __('static.regions.countries') }}</a>
+                                </li>
+                                <li class="{{ isActiveRoute('dashboard.countries.create') }}"><a class="menu-item"
+                                        href="{{ route('dashboard.countries.create') }}"
+                                        data-i18n="nav.templates.vert.main">{{ __('static.regions.create_country') }}</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title"
+                                    data-i18n="nav.templates.main">{{ __('static.regions.governorates') }}</span>
+                                <span class="badge badge badge-pill badge-warning">{{ $governorates_count }}</span>
+                            </a>
+                            <ul class="menu-content">
+                                <li class="{{ isActiveRoute('dashboard.governorates.index') }}"><a class="menu-item"
+                                        href="{{ route('dashboard.governorates.index') }}"
+                                        data-i18n="nav.templates.vert.main">{{ __('static.regions.governorates') }}</a>
+                                </li>
+                                <li class="{{ isActiveRoute('dashboard.governorates.create') }}"><a class="menu-item"
+                                        href="{{ route('dashboard.governorates.create') }}"
+                                        data-i18n="nav.templates.vert.main">{{ __('static.regions.create_governorate') }}</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title"
+                                    data-i18n="nav.templates.main">{{ __('static.regions.cities') }}</span>
+                                <span class="badge badge badge-pill badge-warning">{{ $cities_count }}</span>
+                            </a>
+                            <ul class="menu-content">
+                                <li class="{{ isActiveRoute('dashboard.cities.index') }}"><a class="menu-item"
+                                        href="{{ route('dashboard.cities.index') }}"
+                                        data-i18n="nav.templates.vert.main">{{ __('static.regions.cities') }}</a>
+                                </li>
+                                <li class="{{ isActiveRoute('dashboard.cities.create') }}"><a class="menu-item"
+                                        href="{{ route('dashboard.cities.create') }}"
+                                        data-i18n="nav.templates.vert.main">{{ __('static.regions.create_city') }}</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            @endcan
+            @if (auth()->user()->can('categories') || auth()->user()->can('brands'))
+                <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title"
+                            data-i18n="nav.templates.main">
+                            {{ __('static.categories.title') }}
+                            & {{ __('static.brands.title') }}
+                        </span></a>
+                    <ul class="menu-content">
+                        @can('categories')
+                            <li class=" nav-item"><a href="#"><i class="la la-television"></i>
+                                    <span class="menu-title"
+                                        data-i18n="nav.templates.main">{{ __('static.categories.title') }}</span>
+                                    <span class="badge badge badge-pill badge-warning">{{ $categories_count }}</span>
+                                </a>
+                                <ul class="menu-content">
+                                    <li class="{{ isActiveRoute('dashboard.categories.index') }}">
+                                        <a class="menu-item" href="{{ route('dashboard.categories.index') }}"
+                                            data-i18n="nav.templates.vert.main">{{ __('static.categories.title') }}</a>
+                                    </li>
+                                    <li class="{{ isActiveRoute('dashboard.categories.create') }}"><a class="menu-item"
+                                            href="{{ route('dashboard.categories.create') }}"
+                                            data-i18n="nav.templates.vert.main">{{ __('static.categories.create_category') }}</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endcan
+
+                        @can('brands')
+                            <li class=" nav-item"><a href="#"><i class="la la-television"></i><span
+                                        class="menu-title"
+                                        data-i18n="nav.templates.main">{{ __('static.brands.title') }}</span>
+                                    <span class="badge badge badge-pill badge-warning">{{ $brands_count }}</span>
+                                </a>
+                                <ul class="menu-content">
+
+                                    <li class="{{ isActiveRoute('dashboard.brands.index') }}"><a class="menu-item"
+                                            href="{{ route('dashboard.brands.index') }}"
+                                            data-i18n="nav.templates.vert.main">{{ __('static.brands.title') }}</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endcan
+                    </ul>
+                </li>
+            @endif
+
             <li class=" navigation-header">
                 <span data-i18n="nav.category.layouts">Layouts</span><i class="la la-ellipsis-h ft-minus"
                     data-toggle="tooltip" data-placement="right" data-original-title="Layouts"></i>
@@ -56,7 +182,8 @@
                             </li>
                         </ul>
                     </li>
-                    <li><a class="menu-item" href="#" data-i18n="nav.page_layouts.3_columns_detached.main">Content
+                    <li><a class="menu-item" href="#"
+                            data-i18n="nav.page_layouts.3_columns_detached.main">Content
                             Det. Sidebar</a>
                         <ul class="menu-content">
                             <li><a class="menu-item" href="layout-content-detached-left-sidebar.html"
@@ -97,7 +224,8 @@
                     <li><a class="menu-item" href="layout-boxed.html" data-i18n="nav.page_layouts.boxed_layout">Boxed
                             layout</a>
                     </li>
-                    <li><a class="menu-item" href="layout-static.html" data-i18n="nav.page_layouts.static_layout">Static
+                    <li><a class="menu-item" href="layout-static.html"
+                            data-i18n="nav.page_layouts.static_layout">Static
                             layout</a>
                     </li>
                     <li class="navigation-divider"></li>
@@ -902,7 +1030,8 @@
                     <li><a class="menu-item" href="form-switch.html"
                             data-i18n="nav.form_elements.form_switch">Switch</a>
                     </li>
-                    <li><a class="menu-item" href="#" data-i18n="nav.form_elements.form_select.main">Select</a>
+                    <li><a class="menu-item" href="#"
+                            data-i18n="nav.form_elements.form_select.main">Select</a>
                         <ul class="menu-content">
                             <li><a class="menu-item" href="form-select2.html"
                                     data-i18n="nav.form_elements.form_select.form_select2">Select2</a>
@@ -969,8 +1098,8 @@
                     </li>
                 </ul>
             </li>
-            <li class=" nav-item"><a href="form-repeater.html"><i class="la la-repeat"></i><span class="menu-title"
-                        data-i18n="nav.form_repeater.main">Form Repeater</span></a>
+            <li class=" nav-item"><a href="form-repeater.html"><i class="la la-repeat"></i><span
+                        class="menu-title" data-i18n="nav.form_repeater.main">Form Repeater</span></a>
             </li>
             <li class=" navigation-header">
                 <span data-i18n="nav.category.tables">Tables</span><i class="la la-ellipsis-h ft-minus"

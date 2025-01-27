@@ -195,7 +195,11 @@ return [
     'attributes' => [
         'role.ar'                  => 'Role in Arabic',
         'role.en'                  => 'Role in English',
-        'permessions'              => 'Permessions'
+        'permessions'              => 'Permessions',
+        'role_id'                  => 'Role',
+        'name.en' => 'Name in English',
+        'name.ar' => 'Name in Arabic',
+        'price'   => 'Price',
     ],
 
 ];

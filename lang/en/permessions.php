@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'admins' => 'Manage Admins',
     'categories' => 'Manage Categories',
     'brands' => 'Manage Brands',
     'coupons' => 'Manage Coupons',
@@ -25,4 +26,5 @@ return [
     'socials' => 'Manage Socials',
     'settings' => 'Manage Settings',
     'menus' => 'Manage Menus',
+    'region' => 'Manage Shipping & Region',
 ];

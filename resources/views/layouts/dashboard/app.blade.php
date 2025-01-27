@@ -3,6 +3,7 @@
 
 <head>
     @include('layouts.dashboard._head')
+    @stack('css')
 </head>
 
 <body class="vertical-layout vertical-menu-modern 2-columns   menu-expanded fixed-navbar" data-open="click"
@@ -17,15 +18,15 @@
 
     <div class="app-content content">
         <div class="content-wrapper">
+            @yield('breadcrumbs')
             <div class="content-body">
                 @yield('content')
             </div>
         </div>
     </div>
-
-
     @include('layouts.dashboard._footer')
     @include('layouts.dashboard._scripts')
+    @stack('js')
 </body>
 
 </html>

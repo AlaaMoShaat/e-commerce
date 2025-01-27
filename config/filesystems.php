@@ -1,5 +1,4 @@
 <?php
-
 return [
 
     /*
@@ -41,6 +40,27 @@ return [
             'driver' => 'local',
             'root' => storage_path('app/public'),
             'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+        'brands' => [
+            'driver' => 'local',
+            'root' => public_path('/uploads/brands'),
+            'url' => env('APP_URL').'/uploads/brands',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+        'products' => [
+            'driver' => 'local',
+            'root' => public_path('/uploads/products'),
+            'url' => env('APP_URL').'/uploads/products',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+        'users' => [
+            'driver' => 'local',
+            'root' => public_path('/uploads/users'),
+            'url' => env('APP_URL').'/uploads/users',
             'visibility' => 'public',
             'throw' => false,
         ],
