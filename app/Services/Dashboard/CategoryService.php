@@ -2,6 +2,7 @@
 
 namespace App\Services\Dashboard;
 
+use Illuminate\Support\Facades\Cache;
 use Yajra\DataTables\Facades\DataTables;
 use App\Repositories\Dashboard\CategoryRepository;
 
@@ -26,11 +27,18 @@ class CategoryService
                 return $category->getTranslation('name', app()->getLocale() );
         })->addColumn('status', function($category) {
             return view('dashboard.categories.statusFeild', compact('category'));
+        })->addColumn('products_count', function($category) {
+            return $category->products_count == 0 ? __('static.global.no_items') : $category->products_count;
         })->make(true);
     }
 
     public function createCategory($data) {
-        return $this->categoryRepository->createCategory($data);
+        $category = $this->categoryRepository->createCategory($data);
+        if(!$category) {
+            return false;
+        }
+        self::categoryCache();
+        return $category;
     }
 
     public function updateCategory($id, $data) {
@@ -39,7 +47,9 @@ class CategoryService
     }
     public function deleteCategory($id) {
         $category = $this->categoryRepository->getCategory($id);
-        return $this->categoryRepository->deleteCategory($category);
+        $category = $this->categoryRepository->deleteCategory($category);
+        self::categoryCache();
+        return $category;
     }
 
     public function getCategoriesForEditCategory($id) {
@@ -64,7 +74,11 @@ class CategoryService
         if (!$category) {
             return false;
         }
+        self::categoryCache();
         return $category;
     }
 
+    public function categoryCache() {
+        Cache::forget('categories_count');
+    }
 }

@@ -116,6 +116,7 @@ return [
         'category_name_en' => 'Category Name in English',
         'create_new_category' => 'Create New Category',
         'parent_category' => 'Parent Category',
+        'products_count' => 'Products Count',
     ],
 
     'brands' => [
@@ -126,5 +127,7 @@ return [
         'brand_name_ar' => 'Brand Name in Arabic',
         'brand_name_en' => 'Brand Name in English',
         'create_new_brand' => 'Create New Brand',
+        'logo' => 'Logo',
+        'products_count' => 'Products Count',
     ],
 ];

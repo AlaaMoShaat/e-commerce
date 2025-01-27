@@ -2,8 +2,10 @@
 
 namespace Database\Seeders\Dashboard;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class CategorySeeder extends Seeder
 {
@@ -12,6 +14,9 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        Category::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         $data = [
             [
                 'name' => ['en' => 'Elctronics', 'ar' => 'الكترونيات'],
@@ -35,7 +40,7 @@ class CategorySeeder extends Seeder
             ],
         ];
         foreach ($data as $item) {
-            \App\Models\Category::create($item);
+            Category::create($item);
         }
     }
 }

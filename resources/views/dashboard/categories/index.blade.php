@@ -44,6 +44,7 @@
                                         <th>#</th>
                                         <th>{{ __('static.categories.title') }}</th>
                                         <th>{{ __('static.status.title') }}</th>
+                                        <th>{{ __('static.brands.products_count') }}</th>
                                         <th>{{ __('static.global.created_at') }}</th>
                                         <th>{{ __('static.actions.title') }}</th>
                                     </tr>
@@ -56,6 +57,7 @@
                                         <th>#</th>
                                         <th>{{ __('static.categories.title') }}</th>
                                         <th>{{ __('static.status.title') }}</th>
+                                        <th>{{ __('static.brands.products_count') }}</th>
                                         <th>{{ __('static.global.created_at') }}</th>
                                         <th>{{ __('static.actions.title') }}</th>
                                     </tr>
@@ -80,7 +82,7 @@
                 bolditalics: "{{ asset('fonts/Amiri/Amiri-BoldItalic.ttf') }}"
             }
         };
-        var lang = "{{ app()->getLocale() }}"
+        var lang = "{{ app()->getLocale() }}";
         $('#dataTable').DataTable({
             language: lang == 'ar' ? {
                 url: 'https://cdn.datatables.net/plug-ins/1.10.24/i18n/ar.json',
@@ -133,6 +135,10 @@
                 {
                     data: 'status',
                     name: 'status'
+                },
+                {
+                    data: 'products_count',
+                    name: 'products_count'
                 },
                 {
                     data: 'created_at',

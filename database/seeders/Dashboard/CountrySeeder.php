@@ -14,7 +14,9 @@ class CountrySeeder extends Seeder
      */
     public function run(): void
     {
-        // DB::table('countries')->truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        Country::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
         $countries = array(
             array(

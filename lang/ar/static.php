@@ -116,6 +116,7 @@ return [
         'category_name_en' => 'اسم الفئة بالإنجليزية',
         'create_new_category' => 'إنشاء فئة جديدة',
         'parent_category' => 'الفئة الاب',
+        'products_count' => 'عدد المنتجات',
     ],
 
     'brands' => [
@@ -126,6 +127,8 @@ return [
         'brand_name_ar' => 'اسم العلامة التجارية بالعربية',
         'brand_name_en' => 'اسم العلامة التجارية بالإنجليزية',
         'create_new_brand' => 'إنشاء علامة تجارية جديدة',
+        'logo' => 'الشعار',
+        'products_count' => 'عدد المنتجات',
     ],
 
 ];

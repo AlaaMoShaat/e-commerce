@@ -99,7 +99,8 @@ Route::group(
 
              ################################ Brand Routes #################################
              Route::group(['middleware'=>'can:brands'], function() {
-                Route::resource('brands', BrandController::class);
+                Route::resource('brands', BrandController::class)->except('show');
+                Route::get('brands-all', [BrandController::class, 'getAllBrands'])->name('brands.all');
                 Route::get('brands/{id}/status', [BrandController::class, 'changeStatus'])->name('brands.changeStatus');
             });
             ################################ End Brand Routes #################################

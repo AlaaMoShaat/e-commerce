@@ -14,7 +14,9 @@ class CitySeeder extends Seeder
      */
     public function run(): void
     {
-        // DB::table('cities')->truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        City::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
         $cities = [
             // Egypt (Governorate ID 1: Alexandria)

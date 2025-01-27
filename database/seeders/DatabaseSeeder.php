@@ -8,8 +8,9 @@ use Illuminate\Database\Seeder;
 use Database\Seeders\Dashboard\CitySeeder;
 use Database\Seeders\Dashboard\RoleSeeder;
 use Database\Seeders\Dashboard\AdminSeeder;
-use Database\Seeders\Dashboard\CategorySeeder;
+use Database\Seeders\Dashboard\BrandSeeder;
 use Database\Seeders\Dashboard\CountrySeeder;
+use Database\Seeders\Dashboard\CategorySeeder;
 use Database\Seeders\Dashboard\GovernorateSeeder;
 
 class DatabaseSeeder extends Seeder
@@ -26,6 +27,7 @@ class DatabaseSeeder extends Seeder
             GovernorateSeeder::class,
             CitySeeder::class,
             CategorySeeder::class,
+            BrandSeeder::class,
             // Your other seeders here...
         ]);
 

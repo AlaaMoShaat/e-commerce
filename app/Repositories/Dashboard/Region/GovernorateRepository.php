@@ -19,7 +19,7 @@ class GovernorateRepository
     {
         $governorates = Governorate::with('shippingGovernorate')->withCount(['cities', 'users'])->when(!empty(request()->keyword), function($query) {
             $query->where('name', 'LIKE', '%' . request()->keyword . '%');
-        })->paginate(6);
+        })->latest()->paginate(6);
         return $governorates;
     }
 

@@ -15,7 +15,7 @@ class CategoryRepository
     }
 
     public function getAllCategories() {
-        return Category::all();
+        return Category::withCount('products')->latest()->get();
     }
     public function getCategory($id) {
         return Category::find($id);

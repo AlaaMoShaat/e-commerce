@@ -52,3 +52,26 @@
  </script>
  <script src="https://cdn.datatables.net/scroller/2.4.3/js/dataTables.scroller.min.js" type="text/javascript"></script>
  <script src="https://cdn.datatables.net/scroller/2.4.3/js/scroller.bootstrap5.min.js" type="text/javascript"></script>
+
+ {{-- file input  --}}
+ <script src="{{ asset('vendor/fileinput/js/fileinput.min.js') }}"></script>
+ <script src="{{ asset('vendor/fileinput/themes/fa5/theme.min.js') }}"></script>
+ @if (config('app.locale') == 'ar')
+     <script src="{{ asset('vendor/fileinput/js/locales/LANG.js') }}"></script>
+     <script src="{{ asset('vendor/fileinput/js/locales/ar.js') }}"></script>
+ @endif
+
+ <script>
+     var lang = "{{ app()->getLocale() }}";
+     $(function() {
+         $('.singleImage').fileinput({
+             theme: 'fa5',
+             language: lang,
+             allowedFileTypes: ['image'],
+             maxFileCount: 1,
+             enableResumableUpload: false,
+             showUpload: false,
+
+         });
+     });
+ </script>
