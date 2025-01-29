@@ -120,17 +120,15 @@
             // عرض نافذة الكابتشا
             document.getElementById('captchaOverlay').style.display = 'flex';
 
-            // تحقق من الكابتشا بعد تفاعل المستخدم
             setTimeout(() => {
-                const captchaResponse = grecaptcha.getResponse(); // الحصول على الاستجابة
+                const captchaResponse = grecaptcha.getResponse();
 
                 if (captchaResponse.length === 0) {
-                    document.getElementById('captchaOverlay').style.display = 'none';
+                    alert("Please complete the CAPTCHA.");
                 } else {
-                    // إرسال النموذج إذا تم التحقق
                     document.getElementById('loginForm').submit();
                 }
-            }, 5000); // تأخير بسيط للسماح للمستخدم بالتفاعل
+            }, 5000);
         });
     </script>
 @endpush

@@ -9,6 +9,7 @@ use Database\Seeders\Dashboard\CitySeeder;
 use Database\Seeders\Dashboard\RoleSeeder;
 use Database\Seeders\Dashboard\AdminSeeder;
 use Database\Seeders\Dashboard\BrandSeeder;
+use Database\Seeders\Dashboard\CouponSeeder;
 use Database\Seeders\Dashboard\CountrySeeder;
 use Database\Seeders\Dashboard\CategorySeeder;
 use Database\Seeders\Dashboard\GovernorateSeeder;
@@ -28,6 +29,7 @@ class DatabaseSeeder extends Seeder
             CitySeeder::class,
             CategorySeeder::class,
             BrandSeeder::class,
+            CouponSeeder::class
             // Your other seeders here...
         ]);
 

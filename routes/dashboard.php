@@ -14,6 +14,7 @@ use App\Http\Controllers\Dashboard\Auth\ResetPasswordController;
 use App\Http\Controllers\Dashboard\Region\GovernorateController;
 use App\Http\Controllers\Dashboard\Auth\ForgotPasswordController;
 use App\Http\Controllers\Dashboard\BrandController;
+use App\Http\Controllers\Dashboard\CouponController;
 
 Route::group(
     [
@@ -105,6 +106,14 @@ Route::group(
             });
             ################################ End Brand Routes #################################
 
+
+             ################################ Coupon Routes #################################
+             Route::group(['middleware'=>'can:coupons'], function() {
+                Route::resource('coupons', CouponController::class)->except('show');
+                Route::get('coupons-all', [CouponController::class, 'getAllCoupons'])->name('coupons.all');
+                Route::get('coupons/{id}/status', [CouponController::class, 'changeStatus'])->name('coupons.changeStatus');
+            });
+            ################################ End Coupon Routes #################################
         });
 
 

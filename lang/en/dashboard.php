@@ -22,4 +22,15 @@ return [
 
     ],
 
+    'coupons' => [
+
+    'coupon_table_paragraph' => 'In addition to the ability to pass language information to DataTables
+                                 through the language configuration option, you can also store
+                                 language information in a file, which DataTables can load
+                                 via Ajax using the language.url option.',
+
+    'coupon_not_found' => 'The coupon is not found.',
+
+    ],
+
 ];

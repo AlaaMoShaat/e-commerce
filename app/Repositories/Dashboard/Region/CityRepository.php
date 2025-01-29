@@ -22,7 +22,7 @@ class CityRepository
     {
         $cities = City::when(!empty(request()->keyword), function($query) {
             $query->where('name', 'LIKE', '%' . request()->keyword . '%');
-        })->latest()->paginate(6);
+        })->paginate(6);
         return $cities;
     }
 

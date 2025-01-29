@@ -1,13 +1,11 @@
 (function (window, undefined) {
     "use strict";
 
-    // تأكد من تحميل SweetAlert2
     if (typeof Swal === "undefined") {
         console.error("SweetAlert2 is not loaded.");
         return;
     }
 
-    // وظيفة التأكيد باستخدام SweetAlert2 مع تنفيذ الحذف باستخدام AJAX
     window.confirmDelete = function (
         event,
         url,
@@ -17,7 +15,6 @@
     ) {
         event.preventDefault();
 
-        // إظهار نافذة التأكيد
         Swal.fire({
             title: title,
             text: message,
@@ -29,21 +26,21 @@
             cancelButtonText: "Cancel",
         }).then((result) => {
             if (result.isConfirmed) {
-                // إرسال طلب AJAX لحذف العنصر
                 $.ajax({
-                    url: url, // الرابط الذي يحدد مكان إرسال الطلب
+                    url: url,
                     type: "POST",
                     data: {
-                        _token: $('meta[name="csrf-token"]').attr("content"), // تضمين CSRF Token
-                        _method: "DELETE", // تحديد أن الطريقة هي DELETE
+                        _token: $('meta[name="csrf-token"]').attr("content"),
+                        _method: "DELETE",
                     },
                     success: function (response) {
                         if (response.status == "success") {
-                            // عند النجاح، عرض رسالة النجاح وحذف العنصر من الصفحة
                             $("#" + item_id).remove();
                             $(".toster_success").text(response.message).show();
+                            if ($("#dataTable")) {
+                                $("#dataTable").DataTable().ajax.reload();
+                            }
                         } else {
-                            // في حالة حدوث خطأ
                             Swal.fire("Error!", response.message, "error");
                         }
 
@@ -51,8 +48,7 @@
                             $(".toster_success, .toster_error").hide();
                         }, 3000);
                     },
-                    error: function (xhr, status, error) {
-                        // في حالة حدوث خطأ في الطلب
+                    error: function () {
                         Swal.fire(
                             "Error!",
                             "There was an error deleting the item.",
@@ -66,7 +62,6 @@
 
     window.changeStatus = function (event, id, url, lang) {
         event.preventDefault();
-        console.log(url);
         var statusText = "";
 
         $.ajax({

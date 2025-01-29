@@ -149,6 +149,26 @@
                 </li>
             @endif
 
+            @can('coupons')
+                <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title"
+                            data-i18n="nav.templates.main">{{ __('static.coupons.title') }}</span>
+                        <span class="main-badge badge badge-pill badge-warning">{{ $coupons_count }}</span>
+                    </a>
+                    <ul class="menu-content">
+
+                        <li class="{{ isActiveRoute('dashboard.coupons.index') }}"><a class="menu-item"
+                                href="{{ route('dashboard.coupons.index') }}"
+                                data-i18n="nav.templates.vert.main">{{ __('static.coupons.title') }}</a>
+                        </li>
+                        <li class="{{ isActiveRoute('dashboard.coupons.create') }}"><a class="menu-item"
+                                href="{{ route('dashboard.coupons.create') }}"
+                                data-i18n="nav.templates.vert.main">{{ __('static.coupons.create_coupon') }}</a>
+                        </li>
+                    </ul>
+                </li>
+            @endcan
+
+
             <li class=" navigation-header">
                 <span data-i18n="nav.category.layouts">Layouts</span><i class="la la-ellipsis-h ft-minus"
                     data-toggle="tooltip" data-placement="right" data-original-title="Layouts"></i>

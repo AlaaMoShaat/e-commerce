@@ -131,4 +131,19 @@ return [
         'products_count' => 'عدد المنتجات',
     ],
 
+    'coupons' => [
+        'title' => 'الكوبونات',
+        'code' => 'الكود',
+        'limit' => 'حد الاستخدام',
+        'times_used' => 'عدد مرات الاستخدام',
+        'start_date' => 'تاريخ البداية',
+        'end_date' => 'تاريخ الانتهاء',
+        'discount' => 'نسبة الخصم',
+        'create_coupon' => 'إنشاء كوبون',
+        'edit_coupon' => 'تعديل الكوبون',
+        'coupon_name' => 'اسم الكوبون',
+        'create_new_coupon' => 'إنشاء كوبون جديد',
+    ],
+
+
 ];

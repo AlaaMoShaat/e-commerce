@@ -120,7 +120,7 @@ return [
     ],
 
     'brands' => [
-        'title' => 'Categories',
+        'title' => 'Brands',
         'create_brand' => 'Create Brand',
         'edit_brand' => 'Edit Brand',
         'brand_name' => 'Brand Name',
@@ -129,5 +129,21 @@ return [
         'create_new_brand' => 'Create New Brand',
         'logo' => 'Logo',
         'products_count' => 'Products Count',
+    ],
+
+    'coupons' => [
+        'title' => 'Coupons',
+        'code' => 'Code',
+        'limit' => 'Limit',
+        'times_used' => 'Times Used',
+        'start_date' => 'Start Date',
+        'end_date' => 'End Date',
+        'discount' => 'Percentage',
+        'create_coupon' => 'Create Coupon',
+        'edit_coupon' => 'Edit Coupon',
+        'coupon_name' => 'Coupon Name',
+        'coupon_name_ar' => 'Coupon Name in Arabic',
+        'coupon_name_en' => 'Coupon Name in English',
+        'create_new_coupon' => 'Create New Coupon',
     ],
 ];

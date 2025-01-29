@@ -18,7 +18,7 @@ class CountryRepository
     {
         $countries = Country::withCount(['governorates', 'users'])->when(!empty(request()->keyword), function($query) {
             $query->where('name', 'LIKE', '%' . request()->keyword . '%');
-        })->latest()->paginate(6);
+        })->paginate(6);
         return $countries;
     }
 
