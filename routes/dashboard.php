@@ -16,6 +16,7 @@ use App\Http\Controllers\Dashboard\Auth\ForgotPasswordController;
 use App\Http\Controllers\Dashboard\BrandController;
 use App\Http\Controllers\Dashboard\CouponController;
 use App\Http\Controllers\Dashboard\FaqController;
+use App\Http\Controllers\Dashboard\SettingController;
 
 Route::group(
     [
@@ -123,6 +124,13 @@ Route::group(
                 Route::get('faqs/{id}/status', [FaqController::class, 'changeStatus'])->name('faqs.changeStatus');
             });
             ################################ End Fqas Routes #################################
+
+            ################################ Setting Routes #################################
+            Route::group(['middleware'=>'can:settings', 'as' => 'settings.'],  function() {
+                Route::get('settings', [SettingController::class, 'index'])->name('index');
+                Route::put('settings/{id}', [SettingController::class, 'update'])->name('update');
+            });
+            ################################ End Setting Routes #################################
         });
 
 

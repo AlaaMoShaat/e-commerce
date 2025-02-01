@@ -57,6 +57,13 @@ return [
             'visibility' => 'public',
             'throw' => false,
         ],
+        'settings' => [
+            'driver' => 'local',
+            'root' => public_path('/uploads/settings'),
+            'url' => env('APP_URL').'/uploads/settings',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
         'users' => [
             'driver' => 'local',
             'root' => public_path('/uploads/users'),

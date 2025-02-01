@@ -179,9 +179,19 @@
                                 href="{{ route('dashboard.faqs.index') }}"
                                 data-i18n="nav.templates.vert.main">{{ __('static.faqs.title') }}</a>
                         </li>
-                        <li class="{{ isActiveRoute('dashboard.faqs.create') }}"><a class="menu-item"
-                                href="{{ route('dashboard.faqs.create') }}"
-                                data-i18n="nav.templates.vert.main">{{ __('static.faqs.create_faq') }}</a>
+                    </ul>
+                </li>
+            @endcan
+
+            @can('settings')
+                <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title"
+                            data-i18n="nav.templates.main">{{ __('static.site_settings.title') }}</span>
+                    </a>
+                    <ul class="menu-content">
+
+                        <li class="{{ isActiveRoute('dashboard.settings.index') }}"><a class="menu-item"
+                                href="{{ route('dashboard.settings.index') }}"
+                                data-i18n="nav.templates.vert.main">{{ __('static.site_settings.title') }}</a>
                         </li>
                     </ul>
                 </li>

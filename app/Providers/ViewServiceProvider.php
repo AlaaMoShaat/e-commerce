@@ -2,13 +2,14 @@
 
 namespace App\Providers;
 
+use App\Models\Faq;
 use App\Models\City;
 use App\Models\Admin;
 use App\Models\Brand;
 use App\Models\Coupon;
 use App\Models\Country;
+use App\Models\Setting;
 use App\Models\Category;
-use App\Models\Faq;
 use App\Models\Governorate;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\ServiceProvider;
@@ -28,64 +29,66 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        view()->composer('dashboard.*', function($view){
-            if(!Cache::has('categories_count')) {
-                Cache::remember('categories_count', now()->addMinutes(60), function() {
-                    return Category::count();
+        view()->composer('dashboard.*', function ($view) {
+            $cacheKeys = [
+                'categories_count' => Category::class,
+                'brands_count' => Brand::class,
+                'admins_count' => Admin::class,
+                'countries_count' => Country::class,
+                'governorates_count' => Governorate::class,
+                'cities_count' => City::class,
+                'coupons_count' => Coupon::class,
+                'faqs_count' => Faq::class,
+            ];
+
+            $cachedData = [];
+
+            foreach ($cacheKeys as $key => $model) {
+                $cachedData[$key] = Cache::remember($key, now()->addMinutes(60), function () use ($model) {
+                    return $model::count();
                 });
             }
 
-            if(!Cache::has('brands_count')) {
-                Cache::remember('brands_count', now()->addMinutes(60), function() {
-                    return Brand::count();
-                });
-            }
-
-            if(!Cache::has('admins_count')) {
-                Cache::remember('admins_count', now()->addMinutes(60), function() {
-                    return Admin::count();
-                });
-            }
-            if(!Cache::has('countries_count')) {
-                Cache::remember('countries_count', now()->addMinutes(60), function() {
-                    return Country::count();
-                });
-            }
-            if(!Cache::has('governorates_count')) {
-                Cache::remember('governorates_count', now()->addMinutes(60), function() {
-                    return Governorate::count();
-                });
-            }
-
-            if(!Cache::has('cities_count')) {
-                Cache::remember('cities_count', now()->addMinutes(60), function() {
-                    return City::count();
-                });
-            }
-            if(!Cache::has('coupons_count')) {
-                Cache::remember('coupons_count', now()->addMinutes(60), function() {
-                    return Coupon::count();
-                });
-            }
-            if(!Cache::has('faqs_count')) {
-                Cache::remember('faqs_count', now()->addMinutes(60), function() {
-                    return Faq::count();
-                });
-            }
-
-            view()->share([
-                'admins_count' => Cache::get('admins_count'),
-
-                'categories_count' => Cache::get('categories_count'),
-                'brands_count' => Cache::get('brands_count'),
-                'countries_count' => Cache::get('countries_count'),
-                'governorates_count' => Cache::get('governorates_count'),
-                'cities_count' => Cache::get('cities_count'),
-                'coupons_count' => Cache::get('coupons_count'),
-
-                'faqs_count' => Cache::get('faqs_count'),
-            ]);
+            view()->share($cachedData);
         });
+
+        $setting = self::firstOrCreateSetting();
+        view()->share([
+            'setting' => $setting,
+        ]);
     }
 
+
+    public function firstOrCreateSetting()
+    {
+        return Setting::firstOrCreate([], [
+            'site_name' => [
+                'ar' => 'المتجر الإلكتروني',
+                'en' => 'E-Commerce',
+            ],
+            'site_desc' => [
+                'ar' => 'متجر إلكتروني متكامل ومتوفر',
+                'en' => 'Complete and available e-commerce store',
+            ],
+            'site_address' => [
+                'ar' => 'مصر, الاسكندرية',
+                'en' => 'Alexandria, Egypt',
+            ],
+            'site_phone' => '555-5555-5555',
+            'site_email' => 'info@ecommerce.com',
+            'favicon' => 'favicon.ico',
+            'site_email_support' => 'email-support@ecommerce.com',
+            'site_facebook_url' => 'https://www.facebook.com/ecommerce',
+            'site_twitter_url' => 'https://www.twitter.com/ecommerce',
+            'site_instagram_url' => 'https://www.instagram.com/ecommerce',
+            'site_whatsapp_url' => 'https://www.whatsapp.com/ecommerce',
+            'logo' => 'logo.png',
+            'site_copyright' => 'copyright',
+            'site_meta_description' => [
+                'ar' => 'متجر إلكتروني متكامل ومتوفر',
+                'en' => 'Complete and available e-commerce store',
+            ],
+            'site_promotion_video_url' => 'https://www.youtube.com/watch?v=WbDh1Ot7Dhg'
+        ]);
+    }
 }
