@@ -146,4 +146,17 @@ return [
         'coupon_name_en' => 'Coupon Name in English',
         'create_new_coupon' => 'Create New Coupon',
     ],
+
+    'faqs' => [
+        'title' => 'Faqs',
+        'question_en' => 'Question in English',
+        'question_ar' => 'Question in Arabic',
+        'answer_en' => 'Answer in English',
+        'answer_ar' => 'Answer in Arabic',
+        'create_faq' => 'Create Faq',
+        'edit_faq' => 'Edit Faq',
+        'faq_name' => 'Faq Name',
+        'create_new_faq' => 'Create New Faq',
+        'no_faqs' => 'No faqs available',
+    ],
 ];

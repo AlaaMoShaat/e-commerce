@@ -8,6 +8,7 @@ use App\Models\Brand;
 use App\Models\Coupon;
 use App\Models\Country;
 use App\Models\Category;
+use App\Models\Faq;
 use App\Models\Governorate;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\ServiceProvider;
@@ -66,6 +67,11 @@ class ViewServiceProvider extends ServiceProvider
                     return Coupon::count();
                 });
             }
+            if(!Cache::has('faqs_count')) {
+                Cache::remember('faqs_count', now()->addMinutes(60), function() {
+                    return Faq::count();
+                });
+            }
 
             view()->share([
                 'admins_count' => Cache::get('admins_count'),
@@ -76,6 +82,8 @@ class ViewServiceProvider extends ServiceProvider
                 'governorates_count' => Cache::get('governorates_count'),
                 'cities_count' => Cache::get('cities_count'),
                 'coupons_count' => Cache::get('coupons_count'),
+
+                'faqs_count' => Cache::get('faqs_count'),
             ]);
         });
     }

@@ -15,6 +15,7 @@ use App\Http\Controllers\Dashboard\Region\GovernorateController;
 use App\Http\Controllers\Dashboard\Auth\ForgotPasswordController;
 use App\Http\Controllers\Dashboard\BrandController;
 use App\Http\Controllers\Dashboard\CouponController;
+use App\Http\Controllers\Dashboard\FaqController;
 
 Route::group(
     [
@@ -114,6 +115,14 @@ Route::group(
                 Route::get('coupons/{id}/status', [CouponController::class, 'changeStatus'])->name('coupons.changeStatus');
             });
             ################################ End Coupon Routes #################################
+
+            ################################ Fqas Routes #################################
+             Route::group(['middleware'=>'can:faqs'], function() {
+                Route::resource('faqs', FaqController::class)->except('show');
+                Route::get('faqs-all', [FaqController::class, 'getAllFaqs'])->name('faqs.all');
+                Route::get('faqs/{id}/status', [FaqController::class, 'changeStatus'])->name('faqs.changeStatus');
+            });
+            ################################ End Fqas Routes #################################
         });
 
 

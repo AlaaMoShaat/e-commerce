@@ -61,6 +61,9 @@
      <script src="{{ asset('vendor/fileinput/js/locales/ar.js') }}"></script>
  @endif
 
+ {{-- summernote --}}
+ <script src="{{ asset('vendor/summernote/summernote-bs4.min.js') }}"></script>
+
  <script>
      var lang = "{{ app()->getLocale() }}";
      $(function() {
@@ -72,6 +75,10 @@
              enableResumableUpload: false,
              showUpload: false,
 
+         });
+
+         $('.summernote').summernote({
+             height: 150,
          });
      });
  </script>

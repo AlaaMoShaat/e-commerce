@@ -259,7 +259,6 @@
                 error: function(data) {
                     if (data.responseJSON.errors) {
                         var errors = data.responseJSON.errors;
-                        $('#error-div').empty();
                         $('#error-list').empty();
                         $.each(errors, function(index, value) {
                             $('#error-list').append(`<li>${value}</li>`);

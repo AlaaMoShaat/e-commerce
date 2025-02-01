@@ -168,6 +168,25 @@
                 </li>
             @endcan
 
+            @can('faqs')
+                <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title"
+                            data-i18n="nav.templates.main">{{ __('static.faqs.title') }}</span>
+                        <span class="main-badge badge badge-pill badge-warning">{{ $faqs_count }}</span>
+                    </a>
+                    <ul class="menu-content">
+
+                        <li class="{{ isActiveRoute('dashboard.faqs.index') }}"><a class="menu-item"
+                                href="{{ route('dashboard.faqs.index') }}"
+                                data-i18n="nav.templates.vert.main">{{ __('static.faqs.title') }}</a>
+                        </li>
+                        <li class="{{ isActiveRoute('dashboard.faqs.create') }}"><a class="menu-item"
+                                href="{{ route('dashboard.faqs.create') }}"
+                                data-i18n="nav.templates.vert.main">{{ __('static.faqs.create_faq') }}</a>
+                        </li>
+                    </ul>
+                </li>
+            @endcan
+
 
             <li class=" navigation-header">
                 <span data-i18n="nav.category.layouts">Layouts</span><i class="la la-ellipsis-h ft-minus"
@@ -1032,7 +1051,8 @@
             <li class=" nav-item"><a href="#"><i class="la la-terminal"></i><span class="menu-title"
                         data-i18n="nav.form_elements.main">Form Elements</span></a>
                 <ul class="menu-content">
-                    <li><a class="menu-item" href="form-inputs.html" data-i18n="nav.form_elements.form_inputs">Form
+                    <li><a class="menu-item" href="form-inputs.html"
+                            data-i18n="nav.form_elements.form_inputs">Form
                             Inputs</a>
                     </li>
                     <li><a class="menu-item" href="form-input-groups.html"

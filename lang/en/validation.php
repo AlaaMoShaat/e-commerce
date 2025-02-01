@@ -200,6 +200,11 @@ return [
         'name.en' => 'Name in English',
         'name.ar' => 'Name in Arabic',
         'price'   => 'Price',
+        'question.en' => 'Question in English',
+        'question.ar' => 'Question in Arabic',
+        'answer.en' => 'Answer in English',
+        'answer.ar' => 'Answer in Arabic',
+
     ],
 
 ];

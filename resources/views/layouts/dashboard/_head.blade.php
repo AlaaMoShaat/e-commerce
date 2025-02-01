@@ -45,7 +45,8 @@
 {{-- file input  --}}
 <link rel="stylesheet" href="{{ asset('vendor/fileinput/css/fileinput.min.css') }}">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" crossorigin="anonymous">
-
+{{-- summernote --}}
+<link rel="stylesheet" href="{{ asset('vendor/summernote/summernote-bs4.min.css') }}">
 @if (config('app.locale') == 'ar')
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard') }}/css-rtl/vendors.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard') }}/css-rtl/app.css">
