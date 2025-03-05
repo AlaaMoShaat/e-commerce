@@ -5,14 +5,16 @@ namespace Database\Seeders;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Database\Seeders\Dashboard\FaqSeeder;
 use Database\Seeders\Dashboard\CitySeeder;
 use Database\Seeders\Dashboard\RoleSeeder;
+use Database\Seeders\Dashboard\UserSeeder;
 use Database\Seeders\Dashboard\AdminSeeder;
 use Database\Seeders\Dashboard\BrandSeeder;
 use Database\Seeders\Dashboard\CouponSeeder;
 use Database\Seeders\Dashboard\CountrySeeder;
 use Database\Seeders\Dashboard\CategorySeeder;
-use Database\Seeders\Dashboard\FaqSeeder;
+use Database\Seeders\Dashboard\AttributeSeeder;
 use Database\Seeders\Dashboard\GovernorateSeeder;
 
 class DatabaseSeeder extends Seeder
@@ -32,6 +34,8 @@ class DatabaseSeeder extends Seeder
             BrandSeeder::class,
             CouponSeeder::class,
             FaqSeeder::class,
+            AttributeSeeder::class,
+            UserSeeder::class,
             // Your other seeders here...
         ]);
 

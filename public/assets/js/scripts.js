@@ -38,7 +38,15 @@
                             $("#" + item_id).remove();
                             $(".toster_success").text(response.message).show();
                             if ($("#dataTable")) {
-                                $("#dataTable").DataTable().ajax.reload();
+                                $(".modal.fade.dtr-bs-modal").hide();
+                                $(".modal-backdrop.fade").hide();
+                                var currentPage = $("#dataTable")
+                                    .DataTable()
+                                    .page();
+                                $("#dataTable")
+                                    .DataTable()
+                                    .page(currentPage)
+                                    .draw(false);
                             }
                         } else {
                             Swal.fire("Error!", response.message, "error");
@@ -72,6 +80,15 @@
                     const statusButton = document.getElementById(
                         "status_" + id
                     );
+                    if ($("#dataTable")) {
+                        $(".modal.fade.dtr-bs-modal").hide();
+                        $(".modal-backdrop.fade").hide();
+                        var currentPage = $("#dataTable").DataTable().page();
+                        $("#dataTable")
+                            .DataTable()
+                            .page(currentPage)
+                            .draw(false);
+                    }
                     const newStatus = response.data.status;
                     if (lang == "ar") {
                         statusText = newStatus == 1 ? "مفعل" : "غير مفعل";

@@ -204,6 +204,8 @@ return [
         'question.ar' => 'Question in Arabic',
         'answer.en' => 'Answer in English',
         'answer.ar' => 'Answer in Arabic',
+        'value.*.ar' => 'The Arabic attribute value is required.',
+        'value.*.en' => 'The English attribute value is required.',
 
     ],
 

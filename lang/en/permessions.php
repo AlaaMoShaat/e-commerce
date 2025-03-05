@@ -27,4 +27,6 @@ return [
     'settings' => 'Manage Settings',
     'menus' => 'Manage Menus',
     'region' => 'Manage Shipping & Region',
+    'attributes' => 'Manage Produce attributes'
+
 ];

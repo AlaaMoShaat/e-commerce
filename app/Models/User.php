@@ -45,4 +45,32 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function country() {
+        return $this->belongsTo(Country::class, 'country_id');
+    }
+    public function governorate() {
+        return $this->belongsTo(Governorate::class, 'governorate_id');
+    }
+    public function city() {
+        return $this->belongsTo(City::class, 'city_id');
+    }
+
+    public function orders() {
+        return $this->hasMany(Order::class, 'user_id');
+    }
+
+    public function getCreatedAtAttribute($val)
+    {
+        return date('Y/m/d - H:i A', strtotime($val));
+    }
+
+    public function getEmailVerifiedAtAttribute($val)
+    {
+        return date('Y/m/d - H:i A', strtotime($val));
+    }
+
+    public function getStatusTranslatable()
+    {
+        return $this->status == 1? __('static.status.active') : __('static.status.inactive');
+    }
 }

@@ -8,7 +8,7 @@
                 </li>
             @endcan
             @can('roles')
-                <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title"
+                <li class=" nav-item"><a href="#"><i class="la la-users"></i><span class="menu-title"
                             data-i18n="nav.templates.main">{{ __('static.global.roles') }}</span></a>
                     <ul class="menu-content">
 
@@ -30,7 +30,7 @@
                 }
             </style>
             @can('admins')
-                <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title"
+                <li class=" nav-item"><a href="#"><i class="la la-user"></i><span class="menu-title"
                             data-i18n="nav.templates.main">{{ __('static.admins.title') }}</span>
                         <span class="main-badge badge badge-pill badge-warning">{{ $admins_count }}</span>
                     </a>
@@ -50,11 +50,10 @@
 
 
             @can('region')
-                <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title"
+                <li class=" nav-item"><a href="#"><i class="la la-map"></i><span class="menu-title"
                             data-i18n="nav.templates.main">{{ __('static.regions.title') }}</span></a>
                     <ul class="menu-content">
-                        <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title"
-                                    data-i18n="nav.templates.main">
+                        <li class=" nav-item"><a href="#"><span class="menu-title" data-i18n="nav.templates.main">
                                     {{ __('static.regions.countries') }}</span>
                                 <span class="badge badge badge-pill badge-warning">{{ $countries_count }}</span>
                             </a>
@@ -70,7 +69,7 @@
                             </ul>
                         </li>
 
-                        <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title"
+                        <li class=" nav-item"><a href="#"><span class="menu-title"
                                     data-i18n="nav.templates.main">{{ __('static.regions.governorates') }}</span>
                                 <span class="badge badge badge-pill badge-warning">{{ $governorates_count }}</span>
                             </a>
@@ -86,7 +85,7 @@
                             </ul>
                         </li>
 
-                        <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title"
+                        <li class=" nav-item"><a href="#"><span class="menu-title"
                                     data-i18n="nav.templates.main">{{ __('static.regions.cities') }}</span>
                                 <span class="badge badge badge-pill badge-warning">{{ $cities_count }}</span>
                             </a>
@@ -105,14 +104,14 @@
                 </li>
             @endcan
             @if (auth()->user()->can('categories') || auth()->user()->can('brands'))
-                <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title"
+                <li class=" nav-item"><a href="#"><i class="la la-tags"></i><span class="menu-title"
                             data-i18n="nav.templates.main">
                             {{ __('static.categories.title') }}
                             & {{ __('static.brands.title') }}
                         </span></a>
                     <ul class="menu-content">
                         @can('categories')
-                            <li class=" nav-item"><a href="#"><i class="la la-television"></i>
+                            <li class=" nav-item"><a href="#">
                                     <span class="menu-title"
                                         data-i18n="nav.templates.main">{{ __('static.categories.title') }}</span>
                                     <span class="badge badge badge-pill badge-warning">{{ $categories_count }}</span>
@@ -131,8 +130,7 @@
                         @endcan
 
                         @can('brands')
-                            <li class=" nav-item"><a href="#"><i class="la la-television"></i><span
-                                        class="menu-title"
+                            <li class=" nav-item"><a href="#"><span class="menu-title"
                                         data-i18n="nav.templates.main">{{ __('static.brands.title') }}</span>
                                     <span class="badge badge badge-pill badge-warning">{{ $brands_count }}</span>
                                 </a>
@@ -150,7 +148,7 @@
             @endif
 
             @can('coupons')
-                <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title"
+                <li class=" nav-item"><a href="#"><i class="la la-ticket"></i><span class="menu-title"
                             data-i18n="nav.templates.main">{{ __('static.coupons.title') }}</span>
                         <span class="main-badge badge badge-pill badge-warning">{{ $coupons_count }}</span>
                     </a>
@@ -169,7 +167,7 @@
             @endcan
 
             @can('faqs')
-                <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title"
+                <li class=" nav-item"><a href="#"><i class="la la-question-circle"></i><span class="menu-title"
                             data-i18n="nav.templates.main">{{ __('static.faqs.title') }}</span>
                         <span class="main-badge badge badge-pill badge-warning">{{ $faqs_count }}</span>
                     </a>
@@ -183,17 +181,35 @@
                 </li>
             @endcan
 
+            <li class=" nav-item"><a href="#"><i class="la la-dropbox"></i><span class="menu-title"
+                        data-i18n="nav.templates.main">{{ __('static.products.title') }}</span>
+                </a>
+                <ul class="menu-content">
+                    @can('products')
+                        <li class="{{ isActiveRoute('dashboard.products.index') }}"><a class="menu-item"
+                                href="{{ route('dashboard.products.index') }}"
+                                data-i18n="nav.templates.vert.main">{{ __('static.products.title') }}</a>
+                        </li>
+                        <li class="{{ isActiveRoute('dashboard.products.create') }}"><a class="menu-item"
+                                href="{{ route('dashboard.products.create') }}"
+                                data-i18n="nav.templates.vert.main">{{ __('static.products.create_product') }}</a>
+                        </li>
+                    @endcan
+                    @can('attributes')
+                        <li class="{{ isActiveRoute('dashboard.attributes.index') }}"><a class="menu-item"
+                                href="{{ route('dashboard.attributes.index') }}"
+                                data-i18n="nav.templates.vert.main">{{ __('static.products.attributes.title') }}</a>
+                        </li>
+                    @endcan
+                </ul>
+            </li>
+
             @can('settings')
-                <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title"
+                <li class="{{ isActiveRoute('dashboard.settings.index') }} nav-item"><a
+                        href="{{ route('dashboard.settings.index') }}"><i class="la la-cogs"></i><span
+                            class="menu-title"
                             data-i18n="nav.templates.main">{{ __('static.site_settings.title') }}</span>
                     </a>
-                    <ul class="menu-content">
-
-                        <li class="{{ isActiveRoute('dashboard.settings.index') }}"><a class="menu-item"
-                                href="{{ route('dashboard.settings.index') }}"
-                                data-i18n="nav.templates.vert.main">{{ __('static.site_settings.title') }}</a>
-                        </li>
-                    </ul>
                 </li>
             @endcan
 
@@ -1651,3 +1667,10 @@
         </ul>
     </div>
 </div>
+
+<style>
+    .menu-title {
+        font-family: system-ui;
+        font-weight: bold;
+    }
+</style>

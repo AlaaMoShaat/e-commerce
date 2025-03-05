@@ -13,8 +13,8 @@
     <title>
         {{ __('static.global.site_name') }} | {{ __('static.global.dashboard') }} | @yield('title')
     </title>
-    <link rel="apple-touch-icon" href="{{ asset('assets/dashboard') }}/images/ico/apple-icon-120.png">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/dashboard') }}/images/ico/favicon.ico">
+    <link rel="apple-touch-icon" href="{{ $setting->favicon }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ $setting->favicon }}">
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700"
         rel="stylesheet">
@@ -59,8 +59,7 @@
                                 class="ft-menu font-large-1"></i></a></li>
                     <li class="nav-item">
                         <a class="navbar-brand" href="index.html">
-                            <img class="brand-logo" alt="modern admin logo"
-                                src="{{ asset('assets/dashboard') }}/images/logo/logo.png">
+                            <img class="brand-logo" alt="modern admin logo" src="{{ asset($setting->logo) }}">
                             <h3 class="brand-text">E-Commerce</h3>
                         </a>
                     </li>

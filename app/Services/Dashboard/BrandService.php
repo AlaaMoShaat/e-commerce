@@ -19,6 +19,10 @@ class BrandService
         $this->brandRepository = $brandRepository;
     }
 
+    public function getBrands() {
+        return $this->brandRepository->getBrands();
+    }
+
     public function getBrandsForDataTable() {
         $brands = $this->brandRepository->getBrands();
         return DataTables::of($brands)->addIndexColumn()

@@ -17,6 +17,10 @@ class CategoryService
         $this->categoryRepository = $categoryRepository;
     }
 
+    public function getCategories() {
+        return $this->categoryRepository->getAllCategories();
+    }
+
     public function getAllCategoriesForDatatables() {
         $categories = $this->categoryRepository->getAllCategories();
         return DataTables::of($categories)->addIndexColumn()

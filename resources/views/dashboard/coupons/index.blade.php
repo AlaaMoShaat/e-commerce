@@ -280,7 +280,8 @@
             $('#coupon_limit_edit').val($(this).attr('coupon-limit'));
             $('#coupon_start_date_edit').val($(this).attr('coupon-start-date'));
             $('#coupon_end_date_edit').val($(this).attr('coupon-end-date'));
-
+            $('#error-list-edit').empty();
+            $('#error-div-edit').hide();
             $('#edit-coupon-modal').modal('show');
 
         });

@@ -28,11 +28,11 @@ class Setting extends Model
         'site_promotion_video_url'
     ];
     public function getLogoAttribute() {
-        return 'uploads/settings/' . ($this->attributes['logo'] ?? 'default-logo.png');
+        return 'uploads/settings/' . $this->attributes['logo'];
     }
 
     public function getFaviconAttribute() {
-        return 'uploads/settings/' . ($this->attributes['favicon'] ?? 'default-favicon.ico');
+        return 'uploads/settings/' . $this->attributes['favicon'];
     }
 
 }

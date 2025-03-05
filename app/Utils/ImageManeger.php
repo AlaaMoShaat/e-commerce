@@ -7,18 +7,16 @@ use Illuminate\Support\Facades\File;
 
 class ImageManeger
 {
-    // public static function uploadImages($request, $post)
-    // {
-    //     if ($request->hasFile('images')) {
-    //         foreach ($request->images as $image) {
-    //             $file = self::generateImageName($image);
-    //             $path = self::storeImageLocaly($image, 'posts', $file);
-    //             $post->images()->create([
-    //                 'path' => $path,
-    //             ]);
-    //         }
-    //     }
-    // }
+    public static function uploadImages($images, $model, $disk)
+    {
+        foreach ($images as $image) {
+            $file = self::generateImageName($image);
+            $path = self::storeImageLocaly($image, '/', $file, $disk);
+            $model->images()->create([
+                'file_name' => $file,
+            ]);
+        }
+    }
 
     public static function deleteImages($post)
     {

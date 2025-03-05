@@ -1,10 +1,17 @@
 <?php
 
+use Livewire\Livewire;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Dashboard\FaqController;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\AdminController;
+use App\Http\Controllers\Dashboard\BrandController;
 use App\Http\Controllers\Dashboard\WorldController;
+use App\Http\Controllers\Dashboard\CouponController;
+use App\Http\Controllers\Dashboard\ProductController;
+use App\Http\Controllers\Dashboard\SettingController;
 use App\Http\Controllers\Dashboard\CategoryController;
+use App\Http\Controllers\Dashboard\AttributeController;
 use App\Http\Controllers\Dashboard\Auth\AuthController;
 use App\Http\Controllers\Dashboard\Region\CityController;
 use App\Http\Controllers\Dashboard\AuthorizationController;
@@ -13,10 +20,6 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Dashboard\Auth\ResetPasswordController;
 use App\Http\Controllers\Dashboard\Region\GovernorateController;
 use App\Http\Controllers\Dashboard\Auth\ForgotPasswordController;
-use App\Http\Controllers\Dashboard\BrandController;
-use App\Http\Controllers\Dashboard\CouponController;
-use App\Http\Controllers\Dashboard\FaqController;
-use App\Http\Controllers\Dashboard\SettingController;
 
 Route::group(
     [
@@ -25,6 +28,12 @@ Route::group(
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ],
     function () {
+        Livewire::setScriptRoute(function($handle) {
+            return Route::get('/path/livewire/livewire.js', $handle);
+        });
+        Livewire::setUpdateRoute(function ($handle) {
+            return Route::post('/livewire/update', $handle);
+        });
         ################################ Auth Routes #################################
         Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
         Route::post('login', [AuthController::class, 'login'])->name('login.post');
@@ -131,6 +140,25 @@ Route::group(
                 Route::put('settings/{id}', [SettingController::class, 'update'])->name('update');
             });
             ################################ End Setting Routes #################################
+
+           ################################ Attribute Routes #################################
+           Route::group(['middleware'=>'can:attributes'], function() {
+                Route::resource('attributes', AttributeController::class)->except('show');
+                Route::get('attributes-all', [AttributeController::class, 'getAllAttributes'])->name('attributes.all');
+           });
+           ################################ End Attribute Routes #################################
+
+           ################################ Product Routes #################################
+           Route::group(['middleware'=>'can:products'], function() {
+                Route::resource('products', ProductController::class);
+                Route::get('products/{id}/status', [ProductController::class, 'changeStatus'])->name('products.changeStatus');
+                Route::get('products-all', [ProductController::class, 'getAllProducts'])->name('products.all');
+
+                Route::delete('products/variants/{variantId}', [ProductController::class, 'deleteVariant'])->name('products.variants.delete');
+
+            });
+           ################################ End Product Routes #################################
+
         });
 
 
