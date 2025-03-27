@@ -1,5 +1,5 @@
  <!-- Modal -->
- <form action="{{ route('dashboard.coupons.store') }}" method="post" id="create-coupon">
+ <form method="post" id="create-coupon">
      @csrf
      <div class="modal fade" id="add-coupon" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">

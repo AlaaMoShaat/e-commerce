@@ -25,6 +25,14 @@ class UserRepository
         return User::create($data);
     }
 
+    public function deleteUser($user) {
+        return $user->delete();
+    }
 
-
+    public function changeStatus($user) {
+        $user = $user->update([
+            'status' => $user->status == '1'? '0' : '1',
+         ]);
+         return $user;
+    }
 }

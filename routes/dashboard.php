@@ -4,6 +4,7 @@ use Livewire\Livewire;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\FaqController;
 use App\Http\Controllers\Dashboard\HomeController;
+use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\AdminController;
 use App\Http\Controllers\Dashboard\BrandController;
 use App\Http\Controllers\Dashboard\WorldController;
@@ -79,6 +80,13 @@ Route::group(
             });
             ################################ End Admins Routes #############################
 
+            ################################ Users Routes #################################
+            Route::group(['middleware' => 'can:users'], function () {
+                Route::resource('users', UserController::class);
+                Route::get('users/{id}/status', [UserController::class, 'changeStatus'])->name('users.changeStatus');
+                Route::get('users-all', [UserController::class, 'getAllUsers'])->name('users.all');
+            });
+            ################################ End Users Routes #############################
 
             ################################ Shipping & Region Routes #################################
             Route::group(['middleware'=>'can:region'], function () {

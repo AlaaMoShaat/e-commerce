@@ -78,7 +78,6 @@
             </div>
         </div>
         @include('dashboard.users._create')
-        @include('dashboard.users._edit')
     </section>
     <!-- DOM - jQuery events table -->
 @endsection

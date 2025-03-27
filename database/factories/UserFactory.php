@@ -35,7 +35,6 @@ class UserFactory extends Factory
             'country_id' => $countery->id,
             'governorate_id' => $governorate->id,
             'city_id' => $city->id,
-            'phone' => fake()->phoneNumber(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
         ];

@@ -48,6 +48,25 @@
                 </li>
             @endcan
 
+            @can('users')
+                <li class=" nav-item"><a href="#"><i class="la la-user"></i><span class="menu-title"
+                            data-i18n="nav.templates.main">{{ __('static.users.title') }}</span>
+                        <span class="main-badge badge badge-pill badge-warning">{{ $users_count }}</span>
+                    </a>
+                    <ul class="menu-content">
+
+                        <li class="{{ isActiveRoute('dashboard.users.index') }}"><a class="menu-item"
+                                href="{{ route('dashboard.users.index') }}"
+                                data-i18n="nav.templates.vert.main">{{ __('static.users.title') }}</a>
+                        </li>
+                        <li class="{{ isActiveRoute('dashboard.users.create') }}"><a class="menu-item"
+                                href="{{ route('dashboard.users.create') }}"
+                                data-i18n="nav.templates.vert.main">{{ __('static.users.create_user') }}</a>
+                        </li>
+                    </ul>
+                </li>
+            @endcan
+
 
             @can('region')
                 <li class=" nav-item"><a href="#"><i class="la la-map"></i><span class="menu-title"

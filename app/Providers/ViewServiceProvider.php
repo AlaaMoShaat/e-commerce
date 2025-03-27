@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Faq;
 use App\Models\City;
+use App\Models\User;
 use App\Models\Admin;
 use App\Models\Brand;
 use App\Models\Coupon;
@@ -34,6 +35,7 @@ class ViewServiceProvider extends ServiceProvider
                 'categories_count' => Category::class,
                 'brands_count' => Brand::class,
                 'admins_count' => Admin::class,
+                'users_count' => User::class,
                 'countries_count' => Country::class,
                 'governorates_count' => Governorate::class,
                 'cities_count' => City::class,

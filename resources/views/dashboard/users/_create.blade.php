@@ -1,12 +1,12 @@
  <!-- Modal -->
- <form action="{{ route('dashboard.coupons.store') }}" method="post" id="create-coupon">
+ <form method="post" id="create-user">
      @csrf
-     <div class="modal fade" id="add-coupon" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     <div class="modal fade" id="add-user" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
          <div class="modal-dialog" role="document">
              <div class="modal-content">
                  <div class="modal-header">
-                     <h5 class="modal-title" id="exampleModalLabel">{{ __('static.coupons.create_new_coupon') }}</h5>
+                     <h5 class="modal-title" id="exampleModalLabel">{{ __('static.users.create_new_user') }}</h5>
                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                          <span aria-hidden="true">&times;</span>
                      </button>
@@ -20,18 +20,18 @@
                          <div class="row">
                              <div class="col-md-6">
                                  <div class="form-group">
-                                     <label for="coupon_code">{{ __('static.coupons.code') }}</label>
-                                     <input type="text" value="{{ old('code') }}" id="coupon_code"
-                                         class="form-control border-primary"
-                                         placeholder="{{ __('static.coupons.code') }}" name="code">
+                                     <label for="user_name">{{ __('static.users.name') }}</label>
+                                     <input type="text" value="{{ old('name') }}" id="user_name"
+                                         class="form-control border-primary" placeholder="{{ __('static.users.name') }}"
+                                         name="name">
                                  </div>
                              </div>
                              <div class="col-md-6">
                                  <div class="form-group">
-                                     <label for="discount_percentage">{{ __('static.coupons.discount') }}</label>
-                                     <input type="number" min="0" value="{{ old('discount_percentage') }}"
-                                         id="discount_percentage" class="form-control border-primary"
-                                         placeholder="{{ __('static.coupons.discount') }}" name="discount_percentage">
+                                     <label for="user_email">{{ __('static.users.email') }}</label>
+                                     <input type="email" min="0" value="{{ old('email') }}" id="user_email"
+                                         class="form-control border-primary"
+                                         placeholder="{{ __('static.users.email') }}" name="email">
                                  </div>
                              </div>
                          </div>
@@ -39,9 +39,9 @@
                          <div class="row">
                              <div class="col-md-6">
                                  <div class="form-group">
-                                     <label for="coupon_limit">{{ __('static.coupons.limit') }}</label>
-                                     <input type="number" min="0" name="limit" id="coupon_limit"
-                                         value="{{ old('limit') }}" placeholder="{{ __('static.coupons.limit') }}"
+                                     <label for="user_password">{{ __('static.users.password') }}</label>
+                                     <input type="password" name="password" id="user_password"
+                                         value="{{ old('password') }}" placeholder="{{ __('static.users.password') }}"
                                          class="form-control singleImage border-primary">
                                  </div>
                              </div>
@@ -52,27 +52,8 @@
                                      @include('dashboard.includes.status-btns', ['isActive' => '0'])
                                  </div>
                              </div>
-
                          </div>
-                         <div class="row">
-                             <div class="col-md-6">
-                                 <div class="form-group">
-                                     <label for="start_date">{{ __('static.coupons.start_date') }}</label>
-                                     <input type="date" name="start_date" id="start_date"
-                                         value="{{ old('start_date') }}"
-                                         placeholder="{{ __('static.coupons.start_date') }}"
-                                         class="form-control singleImage border-primary">
-                                 </div>
-                             </div>
-                             <div class="col-md-6">
-                                 <div class="form-group">
-                                     <label for="end_date">{{ __('static.coupons.end_date') }}</label>
-                                     <input type="date" name="end_date" id="end_date" value="{{ old('end_date') }}"
-                                         placeholder="{{ __('static.coupons.end_date') }}"
-                                         class="form-control singleImage border-primary">
-                                 </div>
-                             </div>
-                         </div>
+                         @livewire('general.address-drop-down-dependent')
                      </div>
                  </div>
                  <div class="modal-footer">
