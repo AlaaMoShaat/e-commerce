@@ -270,5 +270,13 @@ return [
             'create_new_attribute' => 'Add New Attribute',
             'no_attributes' => 'No attributes available',
         ],
+    ],
+    'contacts' => [
+        'title' => 'Contacts',
+        'name' => 'Name',
+        'email' => 'Email',
+        'phone' => 'Phone',
+       'subject' => 'Subject',
+       'message' => 'Message',
     ]
 ];

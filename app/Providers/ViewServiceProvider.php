@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Admin;
 use App\Models\Brand;
 use App\Models\Coupon;
+use App\Models\Contact;
 use App\Models\Country;
 use App\Models\Setting;
 use App\Models\Category;
@@ -41,13 +42,14 @@ class ViewServiceProvider extends ServiceProvider
                 'cities_count' => City::class,
                 'coupons_count' => Coupon::class,
                 'faqs_count' => Faq::class,
+                'contacts_count' => Contact::class,
             ];
 
             $cachedData = [];
 
             foreach ($cacheKeys as $key => $model) {
-                $cachedData[$key] = Cache::remember($key, now()->addMinutes(60), function () use ($model) {
-                    return $model::count();
+                $cachedData[$key] = Cache::remember($key, now()->addMinutes(30), function () use ($model) {
+                    return $model == 'contacts_count'? $model::where('is_read', 0)->count() : $model::count();
                 });
             }
 

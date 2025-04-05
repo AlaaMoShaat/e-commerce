@@ -9,6 +9,7 @@ use App\Http\Controllers\Dashboard\AdminController;
 use App\Http\Controllers\Dashboard\BrandController;
 use App\Http\Controllers\Dashboard\WorldController;
 use App\Http\Controllers\Dashboard\CouponController;
+use App\Http\Controllers\Dashboard\ContactController;
 use App\Http\Controllers\Dashboard\ProductController;
 use App\Http\Controllers\Dashboard\SettingController;
 use App\Http\Controllers\Dashboard\CategoryController;
@@ -166,6 +167,14 @@ Route::group(
 
             });
            ################################ End Product Routes #################################
+
+           ################################ Contact Routes #################################
+           Route::group(['middleware'=>'can:contact'], function() {
+                Route::get('contacts', [ContactController::class, 'index'])->name('contacts.index');
+                Route::get('contacts/{id}/status', [ContactController::class, 'changeStatus'])->name('contacts.changeStatus');
+
+            });
+           ################################ End Contact Routes #################################
 
         });
 

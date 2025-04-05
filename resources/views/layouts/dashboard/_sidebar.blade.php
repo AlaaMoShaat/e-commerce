@@ -233,11 +233,20 @@
             @endcan
 
 
-            <li class=" navigation-header">
+            @can('contact')
+                <li class="{{ isActiveRoute('dashboard.contacts.index') }} nav-item"><a
+                        href="{{ route('dashboard.contacts.index') }}"><i class="la la-cogs"></i><span
+                            class="menu-title" data-i18n="nav.templates.main">{{ __('static.contacts.title') }}</span>
+                        <span class="main-badge badge badge-pill badge-warning">{{ $contacts_count }}</span>
+                    </a>
+                </li>
+            @endcan
+
+            <li class="navigation-header">
                 <span data-i18n="nav.category.layouts">Layouts</span><i class="la la-ellipsis-h ft-minus"
                     data-toggle="tooltip" data-placement="right" data-original-title="Layouts"></i>
             </li>
-            <li class=" nav-item"><a href="#"><i class="la la-columns"></i><span class="menu-title"
+            <li class="nav-item"><a href="#"><i class="la la-columns"></i><span class="menu-title"
                         data-i18n="nav.page_layouts.main">Page layouts</span><span
                         class="badge badge badge-pill badge-danger float-right mr-2">New</span></a>
                 <ul class="menu-content">

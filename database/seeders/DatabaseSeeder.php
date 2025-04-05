@@ -15,6 +15,7 @@ use Database\Seeders\Dashboard\CouponSeeder;
 use Database\Seeders\Dashboard\CountrySeeder;
 use Database\Seeders\Dashboard\CategorySeeder;
 use Database\Seeders\Dashboard\AttributeSeeder;
+use Database\Seeders\Dashboard\ContactSeeder;
 use Database\Seeders\Dashboard\GovernorateSeeder;
 
 class DatabaseSeeder extends Seeder
@@ -36,6 +37,7 @@ class DatabaseSeeder extends Seeder
             FaqSeeder::class,
             AttributeSeeder::class,
             UserSeeder::class,
+            ContactSeeder::class,
             // Your other seeders here...
         ]);
 
